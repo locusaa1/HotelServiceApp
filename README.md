@@ -6,5 +6,7 @@ We want to achieve the base functionality that was described in class and add th
 We are also researching for information to implement a GUI using JavaFx
 
 Developer Team:
+
 Gazaba Avila, Leonardo
+
 Branda, Gianluca
