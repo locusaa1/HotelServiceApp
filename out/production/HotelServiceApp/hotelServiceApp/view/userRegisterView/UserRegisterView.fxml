@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotelServiceApp.view.userRegisterView.UserRegisterViewController">
+   <children>
+      <TextField fx:id="name" layoutX="50.0" layoutY="89.0" />
+      <TextField fx:id="surname" layoutX="50.0" layoutY="163.0" />
+      <TextField fx:id="dni" layoutX="50.0" layoutY="227.0" />
+      <Button fx:id="confirmButton" layoutX="412.0" layoutY="240.0" mnemonicParsing="false" onAction="#saveUserInfo" text="Confirm" />
+   </children>
+</AnchorPane>

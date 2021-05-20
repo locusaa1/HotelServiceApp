@@ -24,6 +24,9 @@ public class LogInController{
     private Label adminLogInLabel;
 
     @FXML
+    private Button registrationButton;
+
+    @FXML
     private Button adminMenuButton;
 
     @FXML
@@ -41,6 +44,13 @@ public class LogInController{
     @FXML
     void changeLogInView(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../adminLogInView/AdminLogIn.fxml"));
+        Parent root = loader.load();
+        Main.mainStage.setScene(new Scene(root,800,600));
+    }
+
+    @FXML
+    void setRegisterView(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../userRegisterView/UserRegisterView.fxml"));
         Parent root = loader.load();
         Main.mainStage.setScene(new Scene(root,800,600));
     }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotelServiceApp.view.adminLogInView.AdminLogInController">
+   <children>
+      <Label fx:id="adminLogInTitle" layoutX="203.0" layoutY="194.0" text="Hote Service Administration">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <TextField fx:id="adminUsernameField" layoutX="326.0" layoutY="300.0" promptText="username" />
+      <PasswordField fx:id="adminPasswordField" layoutX="326.0" layoutY="354.0" promptText="password" />
+      <Button fx:id="adminLogInButton" layoutX="423.0" layoutY="410.0" mnemonicParsing="false" onAction="#logInAdmin" text="Button" />
+      <Button fx:id="userMenuButton" layoutX="688.0" layoutY="535.0" mnemonicParsing="false" onAction="#changeLogInView" text="Click here" />
+      <Label fx:id="userLogInLabel" layoutX="689.0" layoutY="508.0" text="User Log In?" />
+   </children>
+</Pane>
