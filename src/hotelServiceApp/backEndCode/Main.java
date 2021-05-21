@@ -14,7 +14,7 @@ public class Main extends Application {
     public static Stage mainStage;
     public static Scene logInScene;
 
-    public static List <Persona> persona = new ArrayList<>();
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
