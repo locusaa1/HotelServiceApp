@@ -38,7 +38,7 @@ public class LogInController{
     @FXML
     void logInUser(ActionEvent event) {
 
-        System.out.println("User Loged In");
+
     }
 
     @FXML

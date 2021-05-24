@@ -6,7 +6,7 @@ public abstract class Person {
     private String surname;
     private String dni;
     private String country;
-    private String adress;
+    private String address;
     private String phone;
     private String username;
     private String password;
@@ -15,13 +15,13 @@ public abstract class Person {
 
     }
 
-    public Person(String name, String surname, String dni, String country, String adress, String phone, String username, String password) {
+    public Person(String name, String surname, String dni, String country, String address, String phone, String username, String password) {
 
         this.name = name;
         this.surname = surname;
         this.dni = dni;
         this.country = country;
-        this.adress = adress;
+        this.address = address;
         this.phone = phone;
         this.username = username;
         this.password = password;
@@ -69,12 +69,12 @@ public abstract class Person {
 
     public String getAdress() {
 
-        return adress;
+        return address;
     }
 
     public void setAdress(String adress) {
 
-        this.adress = adress;
+        this.address = adress;
     }
 
     public String getPhone() {
@@ -106,4 +106,5 @@ public abstract class Person {
 
         this.password = password;
     }
+
 }
