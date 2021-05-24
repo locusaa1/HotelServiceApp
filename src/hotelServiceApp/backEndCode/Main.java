@@ -6,15 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main extends Application {
 
     public static Stage mainStage;
     public static Scene logInScene;
-
-
+    public static HotelData hotelData;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -27,8 +23,9 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-
+        Main.hotelData = new HotelData();
+        Passenger p = new Passenger("carlos","garcia","111","USA","Calle 40","223","carlitos","123");
+        Main.hotelData.setPassengerList(p);
         launch(args);
     }
-
 }
