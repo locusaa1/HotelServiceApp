@@ -16,10 +16,10 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameField" layoutX="326.0" layoutY="300.0" promptText="username" />
-      <PasswordField fx:id="passwordField" layoutX="326.0" layoutY="354.0" promptText="password" />
-      <Button fx:id="logInButton" layoutX="423.0" layoutY="410.0" mnemonicParsing="false" onAction="#logInUser" text="LogIn" />
-      <Button fx:id="adminMenuButton" layoutX="688.0" layoutY="535.0" mnemonicParsing="false" onAction="#changeLogInView" text="Click here" />
+      <TextField fx:id="usernameTextField" layoutX="326.0" layoutY="300.0" promptText="username" />
+      <PasswordField fx:id="passwordTextField" layoutX="326.0" layoutY="354.0" promptText="password" />
+      <Button fx:id="logInButton" layoutX="423.0" layoutY="410.0" mnemonicParsing="false" onAction="#setUserMainMenuView" text="LogIn" />
+      <Button fx:id="adminLogInButton" layoutX="688.0" layoutY="535.0" mnemonicParsing="false" onAction="#changeLogInView" text="Click here" />
       <Label fx:id="adminLogInLabel" layoutX="684.0" layoutY="509.0" text="Admin Log In?" />
       <Button fx:id="registrationButton" layoutX="51.0" layoutY="535.0" mnemonicParsing="false" onAction="#setRegisterView" text="Register" />
       <Label layoutX="44.0" layoutY="509.0" text="First time here?" />

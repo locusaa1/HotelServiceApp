@@ -25,6 +25,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         Main.hotelData = new HotelData();
         Passenger p = new Passenger("carlos","garcia","111","USA","Calle 40","223","carlitos","123");
+        p.setHosted(true);
         Main.hotelData.setPassengerList(p);
         launch(args);
     }

@@ -1,19 +1,12 @@
 package hotelServiceApp.view.userMainMenu;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 
 public class UserMainMenuController {
 
     @FXML
-    private DatePicker firstDateField;
+    private Label label;
 
-    @FXML
-    void dateSelected(ActionEvent event) {
-
-    }
-
-    public void asd (){
-    }
 }
+
