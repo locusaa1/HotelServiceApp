@@ -83,6 +83,11 @@ public class UserRegisterViewController {
     @FXML
     private TextField usernameTextField;
 
+    /**This method is used when the confirm button is pressed by the user.
+     *It checks if the passenger dni is already in the database, it it is true then throws an alert.
+     *It also checks if the username is already taken, if it is true then trows another alert to the user.
+     *If everything is ok, when the user press the confirm button it will save all the info into a passenger and will add it to the hotelData in the Main.*/
+
     @FXML
     void saveUserInfo(ActionEvent event) {
 
@@ -112,7 +117,7 @@ public class UserRegisterViewController {
             }
         } else {
 
-            Alert alertPassengerExists = new Alert(Alert.AlertType.ERROR);
+            Alert alertPassengerExists = new Alert(Alert.AlertType.ERROR,"",ButtonType.YES,ButtonType.NO);
             alertPassengerExists.setHeaderText(null);
             alertPassengerExists.setTitle("Error");
             alertPassengerExists.setContentText("The passenger is already registered.");
@@ -120,9 +125,25 @@ public class UserRegisterViewController {
         }
     }
 
+    /**This method is used when the discard button is pressed by the user.
+     *It always throws and alert to confirm if the user is sure about leaving the windows with all the information wrote.
+     *If the result of the alert is the confirm button, then it will go back to the logIn scene.
+     *If the result is the cancel button, then it will close the alert and stay in the same scene.*/
+
     @FXML
     void discardInfo(ActionEvent event) {
 
-    }
+        ButtonType confirm = new ButtonType("Go back", ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancel = new ButtonType("Stay", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Alert alertDiscardChanges = new Alert(Alert.AlertType.CONFIRMATION,"",confirm,cancel);
+        alertDiscardChanges.setHeaderText(null);
+        alertDiscardChanges.setTitle("Confirmation");
+        alertDiscardChanges.setContentText("Are you sure you want to discard the info and go back?");
+        alertDiscardChanges.showAndWait();
 
+        if (alertDiscardChanges.getResult().equals(confirm)){
+
+            Main.mainStage.setScene(Main.logInScene);
+        }
+    }
 }
