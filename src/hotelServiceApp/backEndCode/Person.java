@@ -2,14 +2,14 @@ package hotelServiceApp.backEndCode;
 
 public abstract class Person {
 
-    private String name;
-    private String surname;
-    private String dni;
-    private String country;
-    private String address;
-    private String phone;
-    private String username;
-    private String password;
+    protected String name;
+    protected String surname;
+    protected String dni;
+    protected String country;
+    protected String address;
+    protected String phone;
+    protected String username;
+    protected String password;
 
     public Person() {
 
