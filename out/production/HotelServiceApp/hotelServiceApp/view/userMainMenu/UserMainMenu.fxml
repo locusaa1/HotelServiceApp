@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -7,8 +8,8 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotelServiceApp.view.userMainMenu.UserMainMenu">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotelServiceApp.view.userMainMenu.UserMainMenuController">
    <children>
-      <DatePicker fx:id="firstDateField" layoutX="300.0" layoutY="131.0" onAction="#dateSelected" />
+      <Label fx:id="label" layoutX="340.0" layoutY="142.0" prefHeight="62.0" prefWidth="120.0" text="USER MAIN MENU" />
    </children>
 </AnchorPane>

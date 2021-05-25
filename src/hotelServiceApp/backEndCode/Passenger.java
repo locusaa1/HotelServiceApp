@@ -12,6 +12,7 @@ public final class Passenger extends Person {
     private double occupationPrice;
     private double purchasesTotal;
     private List<PassengerReview> passengerReviews;
+    private Boolean hosted;
 
     public Passenger() {
 
@@ -20,15 +21,17 @@ public final class Passenger extends Person {
         this.purchases = new ArrayList<>();
         this.purchasesTotal = 0;
         this.passengerReviews = new ArrayList<>();
+        this.hosted = false;
     }
 
     public Passenger(String name, String surname, String dni, String country, String address, String phone, String username, String password) {
 
-        super(name,username,dni,country,address,phone,username,password);
+        super(name, username, dni, country, address, phone, username, password);
         this.id = UUID.randomUUID();
         this.purchases = new ArrayList<>();
         this.purchasesTotal = 0;
         this.passengerReviews = new ArrayList<>();
+        this.hosted = false;
     }
 
     public Room getRoom() {
@@ -79,6 +82,16 @@ public final class Passenger extends Person {
     public void setPassengerReviews(PassengerReview passengerReview) {
 
         this.passengerReviews.add(passengerReview);
+    }
+
+    public Boolean getHosted() {
+
+        return hosted;
+    }
+
+    public void setHosted(Boolean hosted) {
+
+        this.hosted = hosted;
     }
 
     @Override
