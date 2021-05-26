@@ -6,15 +6,17 @@ public final class Room {
     private int roomNumber;
     private int maxCapacity;
     private List<Passenger> passengers;
+    private double price;
     private boolean available;
 
     public Room() {
     }
 
-    public Room(int roomNumber, int maxCapacity, List<Passenger> passengers, boolean available) {
+    public Room(int roomNumber, int maxCapacity, List<Passenger> passengers, double price, boolean available) {
         this.roomNumber = roomNumber;
         this.maxCapacity = maxCapacity;
         this.passengers = passengers;
+        this.price = price;
         this.available = available;
     }
 
@@ -40,6 +42,14 @@ public final class Room {
 
     public void setPassengers(List<Passenger> passengers) {
         this.passengers = passengers;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public boolean isAvailable() {
