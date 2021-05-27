@@ -2,6 +2,7 @@ package hotelServiceApp.view.logInView;
 
 import hotelServiceApp.backEndCode.Main;
 import hotelServiceApp.backEndCode.Passenger;
+import hotelServiceApp.view.userBookingView.UserBookingViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,11 +35,13 @@ public class LogInController {
     @FXML
     private Button logInButton;
 
-    /**setUserMainMenuView(ActionEvent event)
-     *This method is an event handler used when the LogIn button is pressed by the user.
-     *It checks if the username exists, if it doesn't then throws an alert to the user.
-     *It checks if the password matched the username, if it doesn't then throws another type of alert.
-     *And it also checks in case that the user LogIn successfully, if he is hosted or not, then sets the appropriated scene.*/
+    /**
+     * setUserMainMenuView(ActionEvent event)
+     * This method is an event handler used when the LogIn button is pressed by the user.
+     * It checks if the username exists, if it doesn't then throws an alert to the user.
+     * It checks if the password matched the username, if it doesn't then throws another type of alert.
+     * And it also checks in case that the user LogIn successfully, if he is hosted or not, then sets the appropriated scene.
+     */
 
     @FXML
     void setUserMainMenuView(ActionEvent event) throws IOException {
@@ -57,7 +60,8 @@ public class LogInController {
                     Main.mainStage.setScene(new Scene(root, 800, 600));
                 } else {
 
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../userBookingMenu/UserBookingMenu.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../userBookingView/UserBookingView.fxml"));
+                    UserBookingViewController.passenger = passenger;
                     Parent root = loader.load();
                     Main.mainStage.setScene(new Scene(root, 800, 600));
                 }
@@ -79,9 +83,11 @@ public class LogInController {
         }
     }
 
-    /**changeLogInView(ActionEvent event)
-     *This method is an event handler used when the adminLogIn button is pressed by the user.
-     *It sets the admin log in scene.*/
+    /**
+     * changeLogInView(ActionEvent event)
+     * This method is an event handler used when the adminLogIn button is pressed by the user.
+     * It sets the admin log in scene.
+     */
 
     @FXML
     void changeLogInView(ActionEvent event) throws IOException {
@@ -91,9 +97,11 @@ public class LogInController {
         Main.mainStage.setScene(new Scene(root, 800, 600));
     }
 
-    /**setRegisterView(ActionEvent event)
-     *This method is an event handler used when the registration button is pressed by the user.
-     *It sets the registration scene*/
+    /**
+     * setRegisterView(ActionEvent event)
+     * This method is an event handler used when the registration button is pressed by the user.
+     * It sets the registration scene
+     */
 
     @FXML
     void setRegisterView(ActionEvent event) throws IOException {
