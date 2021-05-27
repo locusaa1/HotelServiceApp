@@ -1,6 +1,7 @@
 package hotelServiceApp.backEndCode;
 
-public final class Admin extends Person implements AdminUtilies{
+public final class Admin extends Person{
+
     public Admin() {
     }
 

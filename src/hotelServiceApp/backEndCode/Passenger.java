@@ -12,6 +12,7 @@ public final class Passenger extends Person {
     private double occupationPrice;
     private double purchasesTotal;
     private List<PassengerReview> passengerReviews;
+    private Booking booking;
     private Boolean hosted;
 
     public Passenger() {
@@ -82,6 +83,14 @@ public final class Passenger extends Person {
     public void setPassengerReviews(PassengerReview passengerReview) {
 
         this.passengerReviews.add(passengerReview);
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 
     public Boolean getHosted() {
