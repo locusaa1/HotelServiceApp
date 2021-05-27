@@ -27,12 +27,13 @@ public class Main extends Application {
     public static void main(String[] args) {
         Main.hotelData = new HotelData();
         Passenger p = new Passenger("carlos","garcia","111","USA","Calle 40","223","carlitos","123");
-        Room room = new Room(1,5,500);
+        Room room = new Room(1,5,1,500);
         Booking booking = new Booking(LocalDate.now(),p,room,LocalDate.now().plusDays(1),LocalDate.now().plusDays(2));
-        p.setBooking(booking);
-        Main.hotelData.setBookingList(booking);
         Main.hotelData.setRoomList(room);
         Main.hotelData.setPassengerList(p);
+        Main.hotelData.setNewBooking(p,room,booking);
+        Passenger q = new Passenger("ivan","gonzales","222","USA","Calle 40","223","asd","asd");
+        Main.hotelData.setPassengerList(q);
         launch(args);
     }
 }

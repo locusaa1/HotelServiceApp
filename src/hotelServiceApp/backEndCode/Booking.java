@@ -85,7 +85,7 @@ public final class Booking {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return "Booking{" + "\n" +
                 "Booking Date: " + this.date + "\n" +
                 "Passanger Info { " + "\n" +
@@ -93,5 +93,18 @@ public final class Booking {
                 "Room: " + this.room + "\n" +
                 "Check-in Date: " + this.checkin + "\n" +
                 "Check-out Date: " + this.checkout;
+    }
+
+    public Boolean isBookingAvailable(LocalDate firstDate, LocalDate secondDate) {
+
+        Boolean confirm = false;
+        if (firstDate.isBefore(this.checkin) && secondDate.isBefore(this.checkin)) {
+
+            confirm = true;
+        } else if (firstDate.isAfter(this.checkout) && secondDate.isAfter(this.checkout)) {
+
+            confirm = true;
+        }
+        return confirm;
     }
 }

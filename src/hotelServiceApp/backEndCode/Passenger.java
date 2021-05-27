@@ -19,6 +19,7 @@ public final class Passenger extends Person {
         this.id = UUID.randomUUID();
         this.purchases = new ArrayList<>();
         this.passengerReviews = new ArrayList<>();
+        this.booking = null;
         this.hosted = false;
     }
 
@@ -28,6 +29,7 @@ public final class Passenger extends Person {
         this.id = UUID.randomUUID();
         this.purchases = new ArrayList<>();
         this.passengerReviews = new ArrayList<>();
+        this.booking = null;
         this.hosted = false;
     }
 
@@ -62,6 +64,7 @@ public final class Passenger extends Person {
     }
 
     public Booking getBooking() {
+
         return booking;
     }
 
@@ -79,9 +82,9 @@ public final class Passenger extends Person {
         this.hosted = hosted;
     }
 
-    public double totalPurchases(){
+    public double totalPurchases() {
         double total = 0;
-        for(Purchase purchase : purchases){
+        for (Purchase purchase : purchases) {
             total += purchase.totalPrice();
         }
         return total;
