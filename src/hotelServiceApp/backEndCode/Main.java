@@ -27,7 +27,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         Main.hotelData = new HotelData();
         Passenger p = new Passenger("carlos","garcia","111","USA","Calle 40","223","carlitos","123");
-        Room room = new Room(1,5);
+        Room room = new Room(1,5,500);
         Booking booking = new Booking(LocalDate.now(),p,room,LocalDate.now().plusDays(1),LocalDate.now().plusDays(2));
         p.setBooking(booking);
         Main.hotelData.setBookingList(booking);

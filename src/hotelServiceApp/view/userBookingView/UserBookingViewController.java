@@ -74,7 +74,6 @@ public class UserBookingViewController {
 
         } else {
 
-            Main.hotelData.
         }
     }
 
