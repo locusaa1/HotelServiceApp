@@ -8,6 +8,7 @@ public final class Occupation{
     private Booking booking;
     private List<Passenger> passengers;
 
+
     public Occupation() {
 
     }

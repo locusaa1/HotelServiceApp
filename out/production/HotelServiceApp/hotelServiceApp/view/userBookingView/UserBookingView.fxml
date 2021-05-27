@@ -18,8 +18,10 @@
       <Label fx:id="listSecondLabel" layoutX="56.0" layoutY="187.0" text="You can select and delete any item from the list" />
       <CheckBox fx:id="oneBedroomCheckBox" layoutX="458.0" layoutY="158.0" mnemonicParsing="false" text="1 Bedroom" />
       <CheckBox fx:id="twoBedroomsCheckBox" layoutX="556.0" layoutY="158.0" mnemonicParsing="false" text="2 Bedrooms" />
-      <DatePicker fx:id="firstDatePicker" layoutX="458.0" layoutY="240.0" />
-      <DatePicker fx:id="secondDatePicker" layoutX="458.0" layoutY="348.0" />
+      <DatePicker fx:id="firstDatePicker" layoutX="458.0" layoutY="240.0" promptText="from" />
+      <DatePicker fx:id="secondDatePicker" layoutX="458.0" layoutY="348.0" promptText="untill" />
       <Button fx:id="generateButton" layoutX="458.0" layoutY="449.0" mnemonicParsing="false" onAction="#generateBooking" prefHeight="25.0" prefWidth="174.0" text="Generate reservation" />
+      <Button fx:id="refreshListButton" layoutX="144.0" layoutY="543.0" mnemonicParsing="false" onAction="#refreshListView" text="Refresh List" />
+      <Button fx:id="logOutButton" layoutX="716.0" layoutY="543.0" mnemonicParsing="false" onAction="#logOut" text="LogOut" />
    </children>
 </AnchorPane>

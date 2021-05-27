@@ -3,6 +3,7 @@ package hotelServiceApp.backEndCode;
 import com.sun.deploy.panel.ExceptionListDialog;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -111,5 +112,44 @@ public class HotelData {
             confirm = true;
         }
         return confirm;
+    }
+
+    public Room searchAvailableRoom(LocalDate firstDate, LocalDate secondDate, int amountOfRooms) {
+
+        Room roomFound = null;
+        for (Room room : this.roomList) {
+
+            if (room.getBedroomsAmount().equals(amountOfRooms) && room.isRoomAvailable(firstDate, secondDate).equals(true)) {
+
+                roomFound = room;
+            }
+        }
+        return roomFound;
+    }
+
+    public void setNewBooking(Passenger passenger, Room room, Booking booking) {
+
+        passenger.setBooking(booking);
+        room.setBookingList(booking);
+        this.setBookingList(booking);
+    }
+
+    public void deleteBooking(Booking booking){
+
+        int index=0;
+        for (Booking bookingFound : this.bookingList){
+
+            if (bookingFound.equals(booking)){
+                this.bookingList.set(index,null);
+            }
+            index++;
+        }
+    }
+
+    public void deleteExistingBooking(Passenger passenger, Room room, Booking booking){
+
+        passenger.setBooking(null);
+        room.deleteBooking(booking);
+        this.deleteBooking(booking);
     }
 }
