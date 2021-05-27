@@ -63,4 +63,15 @@ public final class Booking {
     public void setCheckout(LocalDate checkout) {
         this.checkout = checkout;
     }
+
+    @Override
+    public String toString(){
+        return "Booking{" + "\n" +
+                "Booking Date: " + this.date + "\n" +
+                "Passanger Info { " + "\n" +
+                this.passenger.toString() + "\n" +
+                "Room: " + this.room + "\n" +
+                "Check-in Date: " + this.checkin + "\n" +
+                "Check-out Date: " + this.checkout;
+    }
 }
