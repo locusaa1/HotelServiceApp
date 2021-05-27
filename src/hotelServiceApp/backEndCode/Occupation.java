@@ -2,19 +2,21 @@ package hotelServiceApp.backEndCode;
 
 import java.util.List;
 
+
 public final class Occupation{
 
     private Booking booking;
     private List<Passenger> passengers;
-    private double totalAmount;
 
     public Occupation() {
+
     }
 
-    public Occupation(Booking booking, List<Passenger> passengers, double totalAmount) {
+
+    public Occupation(Booking booking, List<Passenger> passengers) {
+
         this.booking = booking;
         this.passengers = passengers;
-        this.totalAmount = totalAmount;
     }
 
     public Booking getBooking() {
@@ -37,13 +39,28 @@ public final class Occupation{
         this.passengers = passengers;
     }
 
-    public double getTotalAmount() {
-
-        return totalAmount;
+    public double totalAmount() {
+        double total = this.booking.getRoom().getPrice();
+        for(Passenger passenger : passengers){
+            total += passenger.totalPurchases();
+        }
+        return total;
     }
 
-    public void setTotalAmount(double totalAmount) {
+    public StringBuilder showPassangers(){
+        StringBuilder aux = new StringBuilder();
+        for(Passenger passenger : passengers){
+            aux.append(passenger.toString());
+        }
+        return aux;
+    }
 
-        this.totalAmount = totalAmount;
+    @Override
+    public String toString(){
+        return "Ocuppation{" + "\n" +
+                booking.toString() + "\n" +
+                this.showPassangers() + "\n" +
+                "Total amount: " + this.totalAmount();
+
     }
 }

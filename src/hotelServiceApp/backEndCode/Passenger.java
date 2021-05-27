@@ -9,8 +9,6 @@ public final class Passenger extends Person {
     private UUID id;
     private Room room;
     private List<Purchase> purchases;
-    private double occupationPrice;
-    private double purchasesTotal;
     private List<PassengerReview> passengerReviews;
     private Booking booking;
     private Boolean hosted;
@@ -20,7 +18,6 @@ public final class Passenger extends Person {
         super();
         this.id = UUID.randomUUID();
         this.purchases = new ArrayList<>();
-        this.purchasesTotal = 0;
         this.passengerReviews = new ArrayList<>();
         this.hosted = false;
     }
@@ -30,7 +27,6 @@ public final class Passenger extends Person {
         super(name, username, dni, country, address, phone, username, password);
         this.id = UUID.randomUUID();
         this.purchases = new ArrayList<>();
-        this.purchasesTotal = 0;
         this.passengerReviews = new ArrayList<>();
         this.hosted = false;
     }
@@ -53,26 +49,6 @@ public final class Passenger extends Person {
     public void setPurchases(Purchase purchase) {
 
         this.purchases.add(purchase);
-    }
-
-    public double getOccupationPrice() {
-
-        return occupationPrice;
-    }
-
-    public void setOccupationPrice(double occupationPrice) {
-
-        this.occupationPrice = occupationPrice;
-    }
-
-    public double getPurchasesTotal() {
-
-        return purchasesTotal;
-    }
-
-    public void setPurchasesTotal(double purchasesTotal) {
-
-        this.purchasesTotal = purchasesTotal;
     }
 
     public List<PassengerReview> getPassengerReviews() {
@@ -103,10 +79,17 @@ public final class Passenger extends Person {
         this.hosted = hosted;
     }
 
+    public double totalPurchases(){
+        double total = 0;
+        for(Purchase purchase : purchases){
+            total += purchase.totalPrice();
+        }
+        return total;
+    }
+
     @Override
     public String toString() {
-        return "Passenger{" +
-                "name" + super.getName() +
-                '}';
+        return "Passenger" + "\n" +
+                super.toString();
     }
 }

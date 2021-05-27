@@ -9,4 +9,9 @@ public final class Admin extends Person{
         super(name, surname, dni, country, address, phone, username, password);
     }
 
+    @Override
+    public String toString(){
+        return "Administrator User" +
+                super.toString();
+    }
 }

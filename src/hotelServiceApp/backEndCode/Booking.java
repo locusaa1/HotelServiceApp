@@ -77,11 +77,21 @@ public final class Booking {
         this.checkout = checkout;
     }
 
-    @Override
-    public String toString() {
+    public String getToString() {
         return "Booking: " + "\n" +
                 "Done in: " + this.date + "\n" +
-                "Room: " + this.getRoom().getRoomNumber() + "\n"+
+                "Room: " + this.getRoom().getRoomNumber() + "\n" +
                 "From: " + this.checkin + " till " + this.checkout;
+    }
+
+    @Override
+    public String toString(){
+        return "Booking{" + "\n" +
+                "Booking Date: " + this.date + "\n" +
+                "Passanger Info { " + "\n" +
+                this.passenger.toString() + "\n" +
+                "Room: " + this.room + "\n" +
+                "Check-in Date: " + this.checkin + "\n" +
+                "Check-out Date: " + this.checkout;
     }
 }

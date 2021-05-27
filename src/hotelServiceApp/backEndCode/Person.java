@@ -107,4 +107,15 @@ public abstract class Person {
         this.password = password;
     }
 
+    @Override
+    public String toString(){
+        return "User information: " + "\n" +
+                "Name: " + this.name + "\n" +
+                "Surname: " + this.surname + "\n" +
+                "Dni: " + this.dni + "\n" +
+                "Country: " + this.country + "\n" +
+                "Address: " + this.address + "\n" +
+                "Phone: " + this.phone + "\n" +
+                "Username: " + this.username;
+    }
 }
