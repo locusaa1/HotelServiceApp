@@ -9,10 +9,14 @@ import java.util.List;
 public class HotelData {
 
     private List<Passenger> passengerList;
+    private List<Room> roomList;
+    private List<Booking> bookingList;
 
     public HotelData() {
 
         this.passengerList = new ArrayList<>();
+        this.roomList = new ArrayList<>();
+        this.bookingList = new ArrayList<>();
     }
 
     public List<Passenger> getPassengerList() {
@@ -30,8 +34,26 @@ public class HotelData {
         return this.passengerList.get(index);
     }
 
-    /**public Boolean passengerExists(String dni)
-     *This method searches in the passengerList of the HotelData if the dni in the parameter is already saved on a existing passenger.*/
+    public List<Room> getRoomList() {
+        return roomList;
+    }
+
+    public void setRoomList(Room room) {
+        this.roomList.add(room);
+    }
+
+    public List<Booking> getBookingList() {
+        return bookingList;
+    }
+
+    public void setBookingList(Booking booking) {
+        this.bookingList.add(booking);
+    }
+
+    /**
+     * public Boolean passengerExists(String dni)
+     * This method searches in the passengerList of the HotelData if the dni in the parameter is already saved on a existing passenger.
+     */
 
     public Boolean passengerExists(String dni) {
 
@@ -44,8 +66,10 @@ public class HotelData {
         return confirm;
     }
 
-    /**public Boolean usernameExists(String username)
-     *This method searches in the PassengerList of the HotelData if the username is already taken.*/
+    /**
+     * public Boolean usernameExists(String username)
+     * This method searches in the PassengerList of the HotelData if the username is already taken.
+     */
 
     public Boolean usernameExists(String username) {
 
@@ -58,9 +82,11 @@ public class HotelData {
         return confirm;
     }
 
-    /**public Passenger usernameSearchPassenger(String username)
-     *This method searches in the PassengerList of the HotelData and return the passenger.
-     *We assume that the passenger already exists. It needs to be checked first using the method passengerExists.*/
+    /**
+     * public Passenger usernameSearchPassenger(String username)
+     * This method searches in the PassengerList of the HotelData and return the passenger.
+     * We assume that the passenger already exists. It needs to be checked first using the method passengerExists.
+     */
 
     public Passenger usernameSearchPassenger(String username) {
 
@@ -73,8 +99,10 @@ public class HotelData {
         return passenger;
     }
 
-    /**public Boolean confirmPassword(String password, Passenger passenger)
-     *This method confirms if the password parameter matches the passenger parameter password*/
+    /**
+     * public Boolean confirmPassword(String password, Passenger passenger)
+     * This method confirms if the password parameter matches the passenger parameter password
+     */
 
     public Boolean confirmPassword(String password, Passenger passenger) {
 
