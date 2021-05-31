@@ -52,10 +52,12 @@ public final class Room {
     }
 
     public Integer getBedroomsAmount() {
+
         return bedroomsAmount;
     }
 
     public void setBedroomsAmount(Integer bedroomsAmount) {
+
         this.bedroomsAmount = bedroomsAmount;
     }
 
@@ -99,28 +101,41 @@ public final class Room {
         this.available = available;
     }
 
-    public Boolean isRoomAvailable(LocalDate firstDate, LocalDate secondDate){
+    /**
+     * public Boolean isRoomAvailable(LocalDate firstDate, LocalDate secondDate)
+     * This method compares every booking into the room with the dates in parameter to confirm if it is available.
+     */
+    public Boolean isRoomAvailable(LocalDate firstDate, LocalDate secondDate) {
 
         Boolean confirm = false;
-        for (Booking booking : this.bookingList){
+        for (Booking booking : this.bookingList) {
 
-            if (booking.isBookingAvailable(firstDate,secondDate).equals(true)){
+            if (booking.isBookingAvailable(firstDate, secondDate).equals(true)) {
 
-                confirm=true;
+                confirm = true;
             }
         }
         return confirm;
     }
 
-    public void deleteBooking(Booking booking){
+    /**
+     * public void deleteBooking(Booking booking)
+     * This method deletes an existing booking searching if it is inside the list.
+     * It could not be deleted inside the iteration because it will throw an Exception.
+     */
+    public void deleteBooking(Booking booking) {
 
-        int index=0;
-        for (Booking bookingFound : this.bookingList){
+        Boolean confirm = false;
+        for (Booking bookingFound : this.bookingList) {
 
-            if (bookingFound.equals(booking)){
-                this.bookingList.set(index,null);
+            if (bookingFound.equals(booking)) {
+
+                confirm = true;
             }
-            index++;
+        }
+        if (confirm) {
+
+            this.bookingList.remove(booking);
         }
     }
 }

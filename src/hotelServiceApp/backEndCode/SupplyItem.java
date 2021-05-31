@@ -5,6 +5,7 @@ import java.util.UUID;
 public class SupplyItem {
 
     private UUID id;
+    private SupplySections section;
     private String name;
     private double price;
     private int stock;
@@ -15,13 +16,24 @@ public class SupplyItem {
         this.id = UUID.randomUUID();
     }
 
-    public SupplyItem(String name, double price, int stock, String desc) {
+    public SupplyItem(SupplySections section, String name, double price, int stock, String desc) {
 
         this.id = UUID.randomUUID();
+        this.section = section;
         this.name = name;
         this.price = price;
         this.stock = stock;
         this.desc = desc;
+    }
+
+    public SupplySections getSection() {
+
+        return section;
+    }
+
+    public void setSection(SupplySections section) {
+
+        this.section = section;
     }
 
     public String getName() {
@@ -64,4 +76,14 @@ public class SupplyItem {
         this.desc = desc;
     }
 
+    /**
+     * public String toString()
+     * This method returns all the info of the class in String type.
+     */
+    @Override
+    public String toString() {
+        return "Name: " + this.name + "\n" +
+                "Price: " + this.price + "\n" +
+                "Item desc: " + this.desc + "\n";
+    }
 }

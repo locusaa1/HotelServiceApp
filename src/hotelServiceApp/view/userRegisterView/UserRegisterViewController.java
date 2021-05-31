@@ -2,6 +2,7 @@ package hotelServiceApp.view.userRegisterView;
 
 import hotelServiceApp.backEndCode.Passenger;
 import hotelServiceApp.backEndCode.Main;
+import hotelServiceApp.view.alerts.Alerts;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -83,10 +84,13 @@ public class UserRegisterViewController {
     @FXML
     private TextField usernameTextField;
 
-    /**This method is used when the confirm button is pressed by the user.
-     *It checks if the passenger dni is already in the database, it it is true then throws an alert.
-     *It also checks if the username is already taken, if it is true then trows another alert to the user.
-     *If everything is ok, when the user press the confirm button it will save all the info into a passenger and will add it to the hotelData in the Main.*/
+    /**
+     * void saveUserInfo(ActionEvent event)
+     * This method is an event handler used when the confirm button is pressed by the user.
+     * It checks if the passenger dni is already in the database, it it is true then throws an alert.
+     * It also checks if the username is already taken, if it is true then trows another alert to the user.
+     * If everything is ok, when the user press the confirm button it will save all the info into a passenger and will add it to the hotelData in the Main.
+     */
 
     @FXML
     void saveUserInfo(ActionEvent event) {
@@ -99,49 +103,44 @@ public class UserRegisterViewController {
                 this.phoneTextField.getText(),
                 this.usernameTextField.getText(),
                 this.passwordTextField.getText());
+        try {
 
-        if (Main.hotelData.passengerExists(passenger.getDni()).equals(false)) {
+            int firstTry = Integer.parseInt(this.dniTextFIeld.getText());
+            int secondTry = Integer.parseInt(this.phoneTextField.getText());
 
-            if(Main.hotelData.usernameExists(passenger.getUsername()).equals(false)){
+            if (Main.hotelData.passengerExists(passenger.getDni()).equals(false)) {
 
-                Main.hotelData.setPassengerList(passenger);
-                System.out.println(Main.hotelData.getPassenger(0).toString());
-                System.out.println(Main.hotelData.getPassenger(1).toString());
-            }else {
+                if (Main.hotelData.usernameExists(passenger.getUsername()).equals(false)) {
 
-                Alert alertUsernameExists = new Alert(Alert.AlertType.ERROR);
-                alertUsernameExists.setHeaderText(null);
-                alertUsernameExists.setTitle("Error");
-                alertUsernameExists.setContentText("The username is already used.");
-                alertUsernameExists.showAndWait();
+                    Main.hotelData.setPassengerList(passenger);
+                    Alerts.infoAlert("Congrats", "You were successfully registered.", "close");
+                    Main.mainStage.setScene(Main.logInScene);
+                } else {
+
+                    Alerts.errorAlert("Error", "The username is already used.", "close");
+                }
+            } else {
+
+                Alerts.errorAlert("Error", "The passenger is already registered.", "close");
             }
-        } else {
+        } catch (NumberFormatException exception) {
 
-            Alert alertPassengerExists = new Alert(Alert.AlertType.ERROR,"",ButtonType.YES,ButtonType.NO);
-            alertPassengerExists.setHeaderText(null);
-            alertPassengerExists.setTitle("Error");
-            alertPassengerExists.setContentText("The passenger is already registered.");
-            alertPassengerExists.showAndWait();
+            Alerts.errorAlert("Error", "DNI & Phone are number text fields", "close");
         }
     }
 
-    /**This method is used when the discard button is pressed by the user.
-     *It always throws and alert to confirm if the user is sure about leaving the windows with all the information wrote.
-     *If the result of the alert is the confirm button, then it will go back to the logIn scene.
-     *If the result is the cancel button, then it will close the alert and stay in the same scene.*/
+    /**
+     * void discardInfo(ActionEvent event)
+     * This method is an event handler used when the discard button is pressed by the user.
+     * It always throws and alert to confirm if the user is sure about leaving the windows with all the information wrote.
+     * If the result of the alert is the confirm button, then it will go back to the logIn scene.
+     * If the result is the cancel button, then it will close the alert and stay in the same scene.
+     */
 
     @FXML
     void discardInfo(ActionEvent event) {
 
-        ButtonType confirm = new ButtonType("Go back", ButtonBar.ButtonData.OK_DONE);
-        ButtonType cancel = new ButtonType("Stay", ButtonBar.ButtonData.CANCEL_CLOSE);
-        Alert alertDiscardChanges = new Alert(Alert.AlertType.CONFIRMATION,"",confirm,cancel);
-        alertDiscardChanges.setHeaderText(null);
-        alertDiscardChanges.setTitle("Confirmation");
-        alertDiscardChanges.setContentText("Are you sure you want to discard the info and go back?");
-        alertDiscardChanges.showAndWait();
-
-        if (alertDiscardChanges.getResult().equals(confirm)){
+        if (Alerts.confirmationAlert("Go back", "Stay", "Confirmation", "Are you sure you want to discard the info and go back?")) {
 
             Main.mainStage.setScene(Main.logInScene);
         }

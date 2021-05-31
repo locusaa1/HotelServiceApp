@@ -77,6 +77,10 @@ public final class Booking {
         this.checkout = checkout;
     }
 
+    /**
+     * public String getToString()
+     * This method is shorter than toString and it is used to show the booking in the user interface.
+     */
     public String getToString() {
         return "Booking: " + "\n" +
                 "Done in: " + this.date + "\n" +
@@ -84,6 +88,10 @@ public final class Booking {
                 "From: " + this.checkin + " till " + this.checkout;
     }
 
+    /**
+     * public String toString()
+     * This method returns all the info of the class in String type.
+     */
     @Override
     public String toString() {
         return "Booking{" + "\n" +
@@ -95,6 +103,10 @@ public final class Booking {
                 "Check-out Date: " + this.checkout;
     }
 
+    /**
+     * public Boolean isBookingAvailable(LocalDate firstDate, LocalDate secondDate)
+     * This method return a Boolean as a confirmation if the two localDates passed by parameters aren't inside the dates of a booking.
+     */
     public Boolean isBookingAvailable(LocalDate firstDate, LocalDate secondDate) {
 
         Boolean confirm = false;

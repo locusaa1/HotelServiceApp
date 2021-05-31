@@ -107,6 +107,10 @@ public abstract class Person {
         this.password = password;
     }
 
+    /**
+     * public String toString()
+     * This method returns all the info of the class in String type.
+     */
     @Override
     public String toString(){
         return "User information: " + "\n" +

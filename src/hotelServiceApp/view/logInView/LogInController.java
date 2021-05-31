@@ -2,7 +2,9 @@ package hotelServiceApp.view.logInView;
 
 import hotelServiceApp.backEndCode.Main;
 import hotelServiceApp.backEndCode.Passenger;
+import hotelServiceApp.view.alerts.Alerts;
 import hotelServiceApp.view.userBookingView.UserBookingViewController;
+import hotelServiceApp.view.userMainMenu.UserMainMenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,12 +52,12 @@ public class LogInController {
 
             Passenger passenger = new Passenger();
             passenger = Main.hotelData.usernameSearchPassenger(this.usernameTextField.getText());
-
             if (Main.hotelData.confirmPassword(this.passwordTextField.getText(), passenger).equals(true)) {
 
                 if (passenger.getHosted().equals(true)) {
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("../userMainMenu/UserMainMenu.fxml"));
+                    UserMainMenuController.passenger = passenger;
                     Parent root = loader.load();
                     Main.mainStage.setScene(new Scene(root, 800, 600));
                 } else {
@@ -67,19 +69,11 @@ public class LogInController {
                 }
             } else {
 
-                Alert alertPasswordDoesntMatch = new Alert(Alert.AlertType.ERROR);
-                alertPasswordDoesntMatch.setHeaderText(null);
-                alertPasswordDoesntMatch.setTitle("Error");
-                alertPasswordDoesntMatch.setContentText("The password is incorrect");
-                alertPasswordDoesntMatch.showAndWait();
+                Alerts.errorAlert("Error", "The password is incorrect", "close");
             }
         } else {
 
-            Alert alertUsernameDoesntExists = new Alert(Alert.AlertType.ERROR);
-            alertUsernameDoesntExists.setHeaderText(null);
-            alertUsernameDoesntExists.setTitle("Error");
-            alertUsernameDoesntExists.setContentText("The username does not exists!");
-            alertUsernameDoesntExists.showAndWait();
+            Alerts.errorAlert("Error", "The username does not exists!", "close");
         }
     }
 
