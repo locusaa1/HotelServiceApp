@@ -4,13 +4,11 @@ import hotelServiceApp.backEndCode.Booking;
 import hotelServiceApp.backEndCode.Main;
 import hotelServiceApp.backEndCode.Passenger;
 import hotelServiceApp.backEndCode.Room;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import hotelServiceApp.view.alerts.Alerts;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import javax.jws.soap.SOAPBinding;
 import java.time.LocalDate;
 
 public class UserBookingViewController {
@@ -59,56 +57,82 @@ public class UserBookingViewController {
     @FXML
     private DatePicker secondDatePicker;
 
+    /**
+     * void deleteBooking(ActionEvent event)
+     * This method is an event handler used when the deleteBooking button is pressed by the user.
+     * It checks if the passenger already has a booking.
+     * It checks if there are items in the list to delete too, and if the items were selected.
+     */
     @FXML
     void deleteBooking(ActionEvent event) {
 
         if (UserBookingViewController.passenger.getBooking() != null) {
 
-            Main.hotelData.deleteExistingBooking(UserBookingViewController.passenger, UserBookingViewController.passenger.getBooking().getRoom(), UserBookingViewController.passenger.getBooking());
-            System.out.println("Borrado exitosamente");
+            if (this.bookingList.getItems().size() > 0) {
+
+                if (this.bookingList.getSelectionModel().getSelectedItems().size() > 0) {
+
+                    Main.hotelData.deleteExistingBooking(UserBookingViewController.passenger, UserBookingViewController.passenger.getBooking().getRoom(), UserBookingViewController.passenger.getBooking());
+                    Alerts.infoAlert("Congrats", "Successfully deleted." + "\n Close this window and refresh the list.", "close");
+                } else {
+
+                    Alerts.errorAlert("Error", "No items selected.", "close");
+                }
+            } else {
+
+                Alerts.errorAlert("Error", "There is nothing in the list to delete.", "close");
+            }
         } else {
 
-            System.out.println("No tiene reservas para borrar");
+            Alerts.errorAlert("Error", "You do not have booking to delete.", "close");
         }
 
     }
 
+    /**
+     * void showBooking(ActionEvent event)
+     * This method is an event handler used when the showBooking button is pressed by the user.
+     * It checks if the passenger has a booking to show.
+     */
     @FXML
     void showBooking(ActionEvent event) {
 
         if (UserBookingViewController.passenger.getBooking() != null) {
 
-            this.bookingList.getItems().add(0,UserBookingViewController.passenger.getBooking().getToString());
+            this.bookingList.getItems().add(0, UserBookingViewController.passenger.getBooking().getToString());
             this.bookingList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-
         } else {
 
-            System.out.println("El cliente no tiene reservas"); //alerta
-
+            Alerts.errorAlert("Error", "You do not have bookings to show.", "close");
         }
     }
 
+    /**
+     * void generateBooking(ActionEvent event)
+     * This method is an event handler used when the generateBooking button is pressed.
+     * This method contains all the alerts needed to check if the fields were picked correctly.
+     * It generates a new booking for the passenger.
+     */
     @FXML
     void generateBooking(ActionEvent event) {
 
         if (UserBookingViewController.passenger.getBooking() != null) {
 
-            System.out.println("Tiene una reserva"); //alerta
+            Alerts.errorAlert("Error", "You already have a booking", "close");
         } else {
 
             LocalDate firstDate = this.firstDatePicker.getValue();
             LocalDate secondDate = this.secondDatePicker.getValue();
-
             if (firstDate == null || secondDate == null) {
 
-                System.out.println("Tiene que seleccionar ambos campos de fechas"); //alerta
+                Alerts.errorAlert("Error", "You have to pick to dates" + "\n (Check-In) & (Check-Out)", "close");
             } else {
 
                 if (secondDate.isAfter(firstDate)) {
 
                     if (firstDate.isBefore(LocalDate.now())) {
 
-                        System.out.println("La fecha de inicio debe ser como mínimo hoy."); //alerta
+                        Alerts.errorAlert("Error", "The chek-In minimu value is today", "close");
                     } else {
 
                         if (this.oneBedroomCheckBox.isSelected()) {
@@ -120,7 +144,7 @@ public class UserBookingViewController {
                                 Main.hotelData.setNewBooking(UserBookingViewController.passenger, room, booking);
                             } else {
 
-                                System.out.println("No hay habitaciones disponibles en esa fecha"); //Alerta
+                                Alerts.errorAlert("Error", "There is no rooms available in the date range selected", "close");
                             }
                         } else if (this.twoBedroomsCheckBox.isSelected()) {
 
@@ -131,44 +155,49 @@ public class UserBookingViewController {
                                 Main.hotelData.setNewBooking(UserBookingViewController.passenger, room, booking);
                             } else {
 
-                                System.out.println("No hay habitaciones disponibles en esa fecha"); //Alerta
+                                Alerts.errorAlert("Error", "There is no rooms available in the date range selected", "close");
                             }
-
                         } else {
 
-                            System.out.println("Tiene que seleccionar al menos una cantidad de habitaciones"); //alerta
+                            Alerts.errorAlert("Error", "You have to use at least one check-box for the bedrooms.", "close");
                         }
                     }
                 } else {
 
-                    System.out.println("La fecha de inicio debe ser anteiror a la de salida"); //alerta
+                    Alerts.errorAlert("Error", "The check-In date goes before the check-Out date", "close");
                 }
             }
         }
     }
 
+    /**
+     * void refreshListView(ActionEvent event)
+     * This method is an event handler used when the refreshListView button is pressed by the user.
+     * It checks if there are items in the list to be refreshed.
+     */
     @FXML
     void refreshListView(ActionEvent event) {
 
-        ObservableList<String>refresh= FXCollections.observableArrayList("");
-        this.bookingList.getItems().setAll(refresh);
-        this.bookingList.refresh();
+        if (this.bookingList.getItems().size() > 0) {
+
+            this.bookingList.getItems().remove(0);
+            this.bookingList.refresh();
+        } else {
+
+            Alerts.errorAlert("Error", "There is nothing in the list to refresh.", "close");
+        }
     }
 
+    /**
+     * void logOut(ActionEvent event)
+     * This method is an event handler used when the logOut button is pressed by the user.
+     * It confirms the logOut of the client.
+     */
     @FXML
     void logOut(ActionEvent event) {
 
-        ButtonType confirm = new ButtonType("Go back", ButtonBar.ButtonData.OK_DONE);
-        ButtonType cancel = new ButtonType("Stay", ButtonBar.ButtonData.CANCEL_CLOSE);
-        Alert alertDiscardChanges = new Alert(Alert.AlertType.CONFIRMATION,"",confirm,cancel);
-        alertDiscardChanges.setHeaderText(null);
-        alertDiscardChanges.setTitle("Confirmation");
-        alertDiscardChanges.setContentText("Are you sure you want to discard the info and go back?");
-        alertDiscardChanges.showAndWait();
+        if (Alerts.confirmationAlert("log-Out", "Stay", "Confirmation", "Are you sure you want to log-Out?")) {
 
-        if (alertDiscardChanges.getResult().equals(confirm)){
-
-            UserBookingViewController.passenger=null;
             Main.mainStage.setScene(Main.logInScene);
         }
     }

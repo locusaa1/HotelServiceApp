@@ -30,37 +30,49 @@ public class Purchase {
     }
 
     public LocalDate getPurchaseDate() {
+
         return purchaseDate;
     }
 
     public void setPurchaseDate(LocalDate purchaseDate) {
+
         this.purchaseDate = purchaseDate;
     }
 
     public Room getRoom() {
+
         return room;
     }
 
     public void setRoom(Room room) {
+
         this.room = room;
     }
 
     public Passenger getPassenger() {
+
         return passenger;
     }
 
     public void setPassenger(Passenger passenger) {
+
         this.passenger = passenger;
     }
 
     public List<SupplyItem> getSupplyItems() {
+
         return supplyItems;
     }
 
     public void setSupplyItems(List<SupplyItem> supplyItems) {
+
         this.supplyItems = supplyItems;
     }
 
+    /**
+     * public double totalPrice()
+     * This method returns all the info of the class in String type.
+     */
     public double totalPrice(){
         double total = 0;
         for(SupplyItem supplyItem : supplyItems){
@@ -68,5 +80,4 @@ public class Purchase {
         }
         return total;
     }
-
 }

@@ -3,21 +3,21 @@ package hotelServiceApp.backEndCode;
 import java.util.List;
 
 
-public final class Occupation{
+public final class Occupation {
 
     private Booking booking;
     private List<Passenger> passengers;
-
+    private double occupationPrice;
 
     public Occupation() {
 
     }
 
-
-    public Occupation(Booking booking, List<Passenger> passengers) {
+    public Occupation(Booking booking, List<Passenger> passengers, double occupationPrice) {
 
         this.booking = booking;
         this.passengers = passengers;
+        this.occupationPrice = occupationPrice;
     }
 
     public Booking getBooking() {
@@ -40,28 +40,38 @@ public final class Occupation{
         this.passengers = passengers;
     }
 
-    public double totalAmount() {
-        double total = this.booking.getRoom().getPrice();
-        for(Passenger passenger : passengers){
-            total += passenger.totalPurchases();
-        }
-        return total;
+    public double getOccupationPrice() {
+
+        return occupationPrice;
     }
 
-    public StringBuilder showPassangers(){
+    public void setOccupationPrice(double occupationPrice) {
+
+        this.occupationPrice = occupationPrice;
+    }
+
+    /**
+     * public StringBuilder showPassengers()
+     * This method build a string appending all the passengers in the occupation.
+     */
+    public StringBuilder showPassengers() {
         StringBuilder aux = new StringBuilder();
-        for(Passenger passenger : passengers){
+        for (Passenger passenger : passengers) {
             aux.append(passenger.toString());
         }
         return aux;
     }
 
+    /**
+     * public String toString()
+     * This method returns all the info of the class in String type.
+     */
     @Override
-    public String toString(){
+    public String toString() {
         return "Ocuppation{" + "\n" +
                 booking.toString() + "\n" +
-                this.showPassangers() + "\n" +
-                "Total amount: " + this.totalAmount();
+                this.showPassengers() + "\n" +
+                "Total amount: " + this.occupationPrice;
 
     }
 }

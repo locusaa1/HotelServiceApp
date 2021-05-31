@@ -69,6 +69,8 @@ public final class Passenger extends Person {
     }
 
     public void setBooking(Booking booking) {
+
+        this.booking = new Booking();
         this.booking = booking;
     }
 
@@ -82,6 +84,10 @@ public final class Passenger extends Person {
         this.hosted = hosted;
     }
 
+    /**
+     * public double totalPurchases()
+     * This method returns the total amount of all the purchases of a passenger
+     */
     public double totalPurchases() {
         double total = 0;
         for (Purchase purchase : purchases) {
@@ -90,6 +96,10 @@ public final class Passenger extends Person {
         return total;
     }
 
+    /**
+     * public String toString()
+     * This method returns all the info of the class in String type.
+     */
     @Override
     public String toString() {
         return "Passenger" + "\n" +
