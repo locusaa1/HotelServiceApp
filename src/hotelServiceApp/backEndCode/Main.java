@@ -33,6 +33,8 @@ public class Main extends Application {
 
         if (Alerts.confirmationAlert("Yes", "No", "Closing the program", "Are you sure you want to close the program?")) {
 
+            //hotelData.hotelDataSaver(hotelData);
+
             this.mainStage.close();
         }
     }
@@ -44,7 +46,7 @@ public class Main extends Application {
         Room room = new Room(1, 5, 1, 500);
         Booking booking = new Booking(LocalDate.now(), p, room, LocalDate.now().plusDays(1), LocalDate.now().plusDays(2));
         Main.hotelData.setRoomList(room);
-        p.setHosted(true);
+        p.setHosted(false);
         Main.hotelData.setPassengerList(p);
         Main.hotelData.setNewBooking(p, room, booking);
         Passenger q = new Passenger("ivan", "gonzales", "222", "USA", "Calle 40", "223", "asd", "asd");
@@ -65,7 +67,7 @@ public class Main extends Application {
         //receptionist.setPaymentList(new Payment(LocalDate.now(), 1000, "first payment"));
         //System.out.println(receptionist.getPaymentList().get(0).toString());
         Main.hotelData.setRecepcionistList(receptionist);
+        //hotelData.importDataFromFile();
         launch(args);
-
     }
 }

@@ -1,8 +1,14 @@
 package hotelServiceApp.backEndCode;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.*;
+import java.lang.reflect.Type;
+import java.nio.file.FileAlreadyExistsException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -311,4 +317,45 @@ public class HotelData {
         }
         return receptionist;
     }
+
+    /*public void hotelDataSaver(HotelData hotel){
+
+        Gson gson = new Gson();
+        String json = gson.toJson(hotel);
+
+        try {
+            FileWriter writer = new FileWriter("HotelData.json");
+            writer.write(json);
+            writer.close();
+        }
+        catch (FileAlreadyExistsException e){
+            e.printStackTrace();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void importDataFromFile(){
+        Type PASSENGER_TYPE = new TypeToken<List<Passenger>>(){}.getType();
+        Type ROOM_TYPE = new TypeToken<List<Room>>(){}.getType();
+        Type BOOKING_TYPE = new TypeToken<List<Booking>>(){}.getType();
+        Type SUPPLYITEM_TYPE = new TypeToken<List<SupplyItem>>(){}.getType();
+        Type RECEPTIONIST_TYPE = new TypeToken<List<Receptionist>>(){}.getType();
+
+        Gson gson = new Gson();
+
+        try{
+            JsonReader reader = new JsonReader(new FileReader("HotelData.json"));
+            this.passengerList = gson.fromJson(reader, PASSENGER_TYPE);
+            this.roomList = gson.fromJson(reader, ROOM_TYPE);
+            this.bookingList = gson.fromJson(reader, BOOKING_TYPE);
+            this.supplyItemList = gson.fromJson(reader, SUPPLYITEM_TYPE);
+            this.recepcionistList = gson.fromJson(reader, RECEPTIONIST_TYPE);
+            this.admin = gson.fromJson(reader, Admin.class);
+        }
+        catch (FileNotFoundException e){
+            e.printStackTrace();
+        }
+    }*/
 }
