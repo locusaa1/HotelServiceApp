@@ -44,7 +44,6 @@ public class LogInController {
      * It checks if the password matched the username, if it doesn't then throws another type of alert.
      * And it also checks in case that the user LogIn successfully, if he is hosted or not, then sets the appropriated scene.
      */
-
     @FXML
     void setUserMainMenuView(ActionEvent event) throws IOException {
 
@@ -82,7 +81,6 @@ public class LogInController {
      * This method is an event handler used when the adminLogIn button is pressed by the user.
      * It sets the admin log in scene.
      */
-
     @FXML
     void changeLogInView(ActionEvent event) throws IOException {
 
@@ -96,7 +94,6 @@ public class LogInController {
      * This method is an event handler used when the registration button is pressed by the user.
      * It sets the registration scene
      */
-
     @FXML
     void setRegisterView(ActionEvent event) throws IOException {
 
@@ -104,5 +101,6 @@ public class LogInController {
         Parent root = loader.load();
         Main.mainStage.setScene(new Scene(root, 800, 600));
     }
+
 
 }
