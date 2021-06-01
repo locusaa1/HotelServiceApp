@@ -13,6 +13,8 @@ public class HotelData {
     private List<Room> roomList;
     private List<Booking> bookingList;
     private List<SupplyItem> supplyItemList;
+    private List<Receptionist> recepcionistList;
+    private Admin admin;
 
     public HotelData() {
 
@@ -20,6 +22,7 @@ public class HotelData {
         this.roomList = new ArrayList<>();
         this.bookingList = new ArrayList<>();
         this.supplyItemList = new ArrayList<>();
+        this.recepcionistList = new ArrayList<>();
     }
 
     public List<Passenger> getPassengerList() {
@@ -67,6 +70,26 @@ public class HotelData {
         this.supplyItemList.add(supplyItem);
     }
 
+    public List<Receptionist> getRecepcionistList() {
+
+        return recepcionistList;
+    }
+
+    public void setRecepcionistList(Receptionist recepcionist) {
+
+        this.recepcionistList.add(recepcionist);
+    }
+
+    public Admin getAdmin() {
+
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+
+        this.admin = admin;
+    }
+
     /**
      * public Boolean passengerExists(String dni)
      * This method searches in the passengerList of the HotelData if the dni in the parameter is already saved on a existing passenger.
@@ -75,7 +98,9 @@ public class HotelData {
 
         Boolean confirm = false;
         for (Passenger p : this.passengerList) {
+
             if (p.getDni().equals(dni)) {
+
                 confirm = true;
             }
         }
@@ -90,7 +115,9 @@ public class HotelData {
 
         Boolean confirm = false;
         for (Passenger p : this.passengerList) {
+
             if (p.getUsername().equals(username)) {
+
                 confirm = true;
             }
         }
@@ -213,5 +240,75 @@ public class HotelData {
     public void setNewPurchase(Passenger passenger, Purchase purchase) {
 
         passenger.setPurchases(purchase);
+    }
+
+    /**
+     * public Boolean receptionistExists(String dni)
+     * This method searches in the receptionistList of the HotelData if the dni in the parameter is already saved on a existing receptionist.
+     */
+    public Boolean receptionistExists(String dni) {
+
+        Boolean confirm = false;
+        for (Receptionist r : this.recepcionistList) {
+
+            if (r.getDni().equals(dni)) {
+
+                confirm = true;
+            }
+        }
+        return confirm;
+    }
+
+    /**
+     * public Receptionist receptionistDniExists(String dni)
+     * This method searches in the ReceptionistList of the HotelData and return the receptionist.
+     * We assume that the receptionist already exists. It needs to be checked first using the method receptionistExists.
+     */
+    public Receptionist receptionistDniExists(String dni) {
+
+        Receptionist receptionist = null;
+        for (Receptionist r : this.recepcionistList) {
+
+            if (r.getDni().equals(dni)) {
+
+                receptionist = r;
+            }
+        }
+        return receptionist;
+    }
+
+    /**
+     * public Boolean receptionistUsernameExists(String username)
+     * This method searches in the receptionistList of the HotelData if the username is already taken.
+     */
+    public Boolean receptionistUsernameExists(String username) {
+
+        Boolean confirm = false;
+        for (Receptionist r : this.recepcionistList) {
+
+            if (r.getUsername().equals(username)) {
+
+                confirm = true;
+            }
+        }
+        return confirm;
+    }
+
+    /**
+     * public Receptionist usernameSearchReceptionist(String username)
+     * This method searches in the PassengerList of the HotelData and return the passenger.
+     * We assume that the passenger already exists. It needs to be checked first using the method passengerExists.
+     */
+    public Receptionist usernameSearchReceptionist(String username) {
+
+        Receptionist receptionist = null;
+        for (Receptionist r : this.recepcionistList) {
+
+            if (r.getUsername().equals(username)) {
+
+                receptionist = r;
+            }
+        }
+        return receptionist;
     }
 }

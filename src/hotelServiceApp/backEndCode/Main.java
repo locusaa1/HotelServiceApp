@@ -1,5 +1,6 @@
 package hotelServiceApp.backEndCode;
 
+import hotelServiceApp.view.alerts.Alerts;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,15 +17,28 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../view/logInview/LogIn.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../view/logInView/LogIn.fxml"));
         this.mainStage = primaryStage;
+        this.mainStage.setOnCloseRequest(e -> {
+            e.consume();
+            closeProgram();
+        });
         this.logInScene = new Scene(root, 800, 600);
         primaryStage.setTitle("Hotel Service App");
         primaryStage.setScene(this.logInScene);
         primaryStage.show();
     }
 
+    public void closeProgram() {
+
+        if (Alerts.confirmationAlert("Yes", "No", "Closing the program", "Are you sure you want to close the program?")) {
+
+            this.mainStage.close();
+        }
+    }
+
     public static void main(String[] args) {
+
         Main.hotelData = new HotelData();
         Passenger p = new Passenger("carlos", "garcia", "111", "USA", "Calle 40", "223", "carlitos", "123");
         Room room = new Room(1, 5, 1, 500);
@@ -45,6 +59,13 @@ public class Main extends Application {
         Main.hotelData.setSupplyItemList(item3);
         Main.hotelData.setSupplyItemList(item4);
         Main.hotelData.setSupplyItemList(item5);
+        Admin admin = new Admin("leo", "gazaba", "111", "arg", "sarasa 20", "111", "admin", "admin", 10000);
+        Main.hotelData.setAdmin(admin);
+        Receptionist receptionist = new Receptionist("gian", "branda", "222", "arg", "asdasd", "111", "asd", "asd", 1000);
+        //receptionist.setPaymentList(new Payment(LocalDate.now(), 1000, "first payment"));
+        //System.out.println(receptionist.getPaymentList().get(0).toString());
+        Main.hotelData.setRecepcionistList(receptionist);
         launch(args);
+
     }
 }
