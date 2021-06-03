@@ -84,6 +84,7 @@ public class SupplyItem {
     public String toString() {
         return "Name: " + this.name + "\n" +
                 "Price: " + this.price + "\n" +
-                "Item desc: " + this.desc + "\n";
+                "Item desc: " + this.desc + "\n" +
+                "Stock: " + this.stock + "\n";
     }
 }

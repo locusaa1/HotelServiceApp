@@ -16,6 +16,9 @@ public class UserBookingViewController {
     public static Passenger passenger;
 
     @FXML
+    private TextField amountOfPassengers;
+
+    @FXML
     private Button refreshListButton;
 
     @FXML
@@ -130,37 +133,41 @@ public class UserBookingViewController {
 
                 if (secondDate.isAfter(firstDate)) {
 
-                    if (firstDate.isBefore(LocalDate.now())) {
+                    if (LocalDate.now().isBefore(firstDate)) {
 
-                        Alerts.errorAlert("Error", "The chek-In minimu value is today", "close");
-                    } else {
+                        try {
 
-                        if (this.oneBedroomCheckBox.isSelected()) {
+                            int amountOfPassengers = Integer.parseInt(this.amountOfPassengers.getText());
+                            if (this.oneBedroomCheckBox.isSelected() || this.twoBedroomsCheckBox.isSelected()) {
 
-                            Room room = Main.hotelData.searchAvailableRoom(firstDate, secondDate, 1);
-                            if (room != null) {
+                                Room room = new Room();
+                                if (this.oneBedroomCheckBox.isSelected()) {
 
-                                Booking booking = new Booking(LocalDate.now(), UserBookingViewController.passenger, room, firstDate, secondDate);
-                                Main.hotelData.setNewBooking(UserBookingViewController.passenger, room, booking);
+                                    room = Main.hotelData.searchAvailableRoom(firstDate, secondDate, 1, amountOfPassengers);
+                                } else {
+
+                                    room = Main.hotelData.searchAvailableRoom(firstDate, secondDate, 2, amountOfPassengers);
+                                }
+
+                                if (room != null) {
+
+                                    Booking booking = new Booking(LocalDate.now(), UserBookingViewController.passenger, room, firstDate, secondDate);
+                                    Main.hotelData.setNewBooking(UserBookingViewController.passenger, room, booking);
+                                    Alerts.infoAlert("Congrats", "Your booking were successfully saved", "close");
+                                } else {
+
+                                    Alerts.errorAlert("Error", "There is no rooms available in the date range selected", "close");
+                                }
                             } else {
 
-                                Alerts.errorAlert("Error", "There is no rooms available in the date range selected", "close");
+                                Alerts.errorAlert("Error", "You have to use at least one check-box for the bedrooms.", "close");
                             }
-                        } else if (this.twoBedroomsCheckBox.isSelected()) {
+                        } catch (NumberFormatException exception) {
 
-                            Room room = Main.hotelData.searchAvailableRoom(firstDate, secondDate, 2);
-                            if (room != null) {
-
-                                Booking booking = new Booking(LocalDate.now(), UserBookingViewController.passenger, room, firstDate, secondDate);
-                                Main.hotelData.setNewBooking(UserBookingViewController.passenger, room, booking);
-                            } else {
-
-                                Alerts.errorAlert("Error", "There is no rooms available in the date range selected", "close");
-                            }
-                        } else {
-
-                            Alerts.errorAlert("Error", "You have to use at least one check-box for the bedrooms.", "close");
+                            Alerts.errorAlert("Error", "The amount of passenger must be a number", "close");
                         }
+                    } else {
+                        Alerts.errorAlert("Error", "The chek-In minimu value is today", "close");
                     }
                 } else {
 

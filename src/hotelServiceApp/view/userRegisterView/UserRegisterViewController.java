@@ -91,7 +91,6 @@ public class UserRegisterViewController {
      * It also checks if the username is already taken, if it is true then trows another alert to the user.
      * If everything is ok, when the user press the confirm button it will save all the info into a passenger and will add it to the hotelData in the Main.
      */
-
     @FXML
     void saveUserInfo(ActionEvent event) {
 
@@ -112,9 +111,15 @@ public class UserRegisterViewController {
 
                 if (Main.hotelData.usernameExists(passenger.getUsername()).equals(false)) {
 
-                    Main.hotelData.setPassengerList(passenger);
-                    Alerts.infoAlert("Congrats", "You were successfully registered.", "close");
-                    Main.mainStage.setScene(Main.logInScene);
+                    if (this.passwordTextField.getText().equals(this.passwordTextFieldConfirm.getText())) {
+
+                        Main.hotelData.setPassengerList(passenger);
+                        Alerts.infoAlert("Congrats", "You were successfully registered.", "close");
+                        Main.mainStage.setScene(Main.logInScene);
+                    } else {
+
+                        Alerts.errorAlert("Error", "The password does not match the confirm password field.", "close");
+                    }
                 } else {
 
                     Alerts.errorAlert("Error", "The username is already used.", "close");
@@ -136,7 +141,6 @@ public class UserRegisterViewController {
      * If the result of the alert is the confirm button, then it will go back to the logIn scene.
      * If the result is the cancel button, then it will close the alert and stay in the same scene.
      */
-
     @FXML
     void discardInfo(ActionEvent event) {
 

@@ -84,6 +84,11 @@ public final class Passenger extends Person {
         this.hosted = hosted;
     }
 
+    public String getHostedState() {
+
+        return (getHosted()) ? "yes" : "no";
+    }
+
     /**
      * public double totalPurchases()
      * This method returns the total amount of all the purchases of a passenger
@@ -102,7 +107,14 @@ public final class Passenger extends Person {
      */
     @Override
     public String toString() {
-        return "Passenger" + "\n" +
-                super.toString();
+        return "Passenger details" + "\n" +
+                "name: " + super.name + "\n" +
+                "surname: " + super.surname + "\n" +
+                "dni: " + super.dni + "\n" +
+                "country: " + super.country + "\n" +
+                "address: " + super.address + "\n" +
+                "phone: " + super.phone + "\n" +
+                "username: " + super.username + "\n" +
+                "hosted:" + this.getHostedState() + "\n";
     }
 }

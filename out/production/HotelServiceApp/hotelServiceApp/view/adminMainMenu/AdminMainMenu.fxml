@@ -1,36 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotelServiceApp.view.adminMainMenu.AdminMainMenuController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FFB47C;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotelServiceApp.view.adminMainMenu.AdminMainMenuController">
    <children>
-      <Label layoutX="383.0" layoutY="52.0" text="Admin" />
-      <Button fx:id="logOutButton" layoutX="727.0" layoutY="548.0" mnemonicParsing="false" onAction="#logOut" text="logOut" />
-      <Button fx:id="backUpButton" layoutX="109.0" layoutY="548.0" mnemonicParsing="false" onAction="#setNewBackUp" text="BackUp" />
-      <Label layoutX="14.0" layoutY="522.0" text="Do not forget to save a copy of the Hotel Info!" />
-      <Label layoutX="29.0" layoutY="96.0" text="Account total cash:" />
-      <Button fx:id="registerReceptionistButton" layoutX="107.0" layoutY="487.0" mnemonicParsing="false" onAction="#registerNewReceptionist" text="Register" />
-      <Label layoutX="21.0" layoutY="460.0" text="Do you need to register a new receptionist?" />
-      <Label layoutX="324.0" layoutY="96.0" text="If you want to pay someone type his dni here:" />
-      <TextField fx:id="dniTextField" layoutX="578.0" layoutY="92.0" promptText="dni" />
-      <ListView fx:id="paymentListView" layoutX="29.0" layoutY="196.0" prefHeight="230.0" prefWidth="344.0" />
-      <Button fx:id="showPaymentButton" layoutX="735.0" layoutY="92.0" mnemonicParsing="false" onAction="#showPayments" text="Show" />
-      <Button fx:id="confirmButton" layoutX="653.0" layoutY="475.0" mnemonicParsing="false" onAction="#confirmPayment" text="Confirm" />
-      <TextField fx:id="accountCashField" alignment="CENTER" editable="false" layoutX="137.0" layoutY="92.0" />
-      <Label layoutX="29.0" layoutY="170.0" text="Latests payments periods of the specific receptionist :" />
-      <Label layoutX="541.0" layoutY="196.0" text="New Payment" />
-      <Label layoutX="505.0" layoutY="235.0" text="Date:" />
-      <TextField fx:id="totalPaymentField" layoutX="541.0" layoutY="288.0" prefHeight="25.0" prefWidth="174.0" />
-      <TextField fx:id="descPaymentField" alignment="TOP_LEFT" layoutX="541.0" layoutY="346.0" prefHeight="111.0" prefWidth="174.0" />
-      <TextField fx:id="receptionistSalaryField" editable="false" layoutX="578.0" layoutY="137.0" />
-      <Label layoutX="444.0" layoutY="141.0" text="This receptionist salary:" />
-      <Label layoutX="505.0" layoutY="292.0" text="Total:" />
-      <Label layoutX="506.0" layoutY="350.0" text="Desc:" />
-      <DatePicker fx:id="paymentDateField" layoutX="541.0" layoutY="231.0" />
-      <Button fx:id="removeButton" layoutX="314.0" layoutY="435.0" mnemonicParsing="false" onAction="#removePayment" text="Remove" />
+      <Label layoutX="205.0" layoutY="23.0" text="Admin Main Menu">
+         <font>
+            <Font name="Bodoni MT" size="50.0" />
+         </font></Label>
+      <Button fx:id="logOutButton" layoutX="720.0" layoutY="559.0" mnemonicParsing="false" onAction="#logOut" text="LogOut">
+         <font>
+            <Font name="Bodoni MT" size="14.0" />
+         </font></Button>
+      <AnchorPane layoutX="11.0" layoutY="204.0" prefHeight="292.0" prefWidth="430.0" style="-fx-background-color: #FFA15B;">
+         <children>
+            <ListView fx:id="paymentListView" layoutX="14.0" layoutY="25.0" prefHeight="230.0" prefWidth="402.0" />
+            <Label layoutX="14.0" layoutY="8.0" text="Latests payments periods of the specific receptionist :">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="removeButton" layoutX="347.0" layoutY="261.0" mnemonicParsing="false" onAction="#removePayment" text="Remove">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="11.0" layoutY="89.0" prefHeight="52.0" prefWidth="272.0" style="-fx-background-color: #FFA15B;">
+         <children>
+            <Label layoutY="18.0" text="Account total cash:">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="accountCashField" alignment="CENTER" editable="false" layoutX="115.0" layoutY="14.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="13.0" layoutY="507.0" prefHeight="83.0" prefWidth="299.0" style="-fx-background-color: #FFA15B;">
+         <children>
+            <Button fx:id="backUpButton" layoutX="109.0" layoutY="41.0" mnemonicParsing="false" onAction="#setNewBackUp" text="BackUp">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="14.0" layoutY="15.0" text="Do not forget to save a copy of the Hotel Info!">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="320.0" layoutY="507.0" prefHeight="83.0" prefWidth="272.0" style="-fx-background-color: #FFA15B;">
+         <children>
+            <Button fx:id="registerReceptionistButton" layoutX="102.0" layoutY="41.0" mnemonicParsing="false" onAction="#registerNewReceptionist" text="Register">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="10.0" layoutY="15.0" text="Do you need to register a new receptionist?">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="470.0" layoutY="89.0" prefHeight="407.0" prefWidth="299.0" style="-fx-background-color: #FFA15B;">
+         <children>
+            <Label layoutX="19.0" layoutY="9.0" text="Dni:">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="dniTextField" layoutX="50.0" layoutY="5.0" prefHeight="25.0" prefWidth="174.0" promptText="dni" />
+            <Button fx:id="showPaymentButton" layoutX="236.0" layoutY="5.0" mnemonicParsing="false" onAction="#showPayments" text="Show">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="confirmButton" layoutX="213.0" layoutY="369.0" mnemonicParsing="false" onAction="#confirmPayment" text="Confirm">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="50.0" layoutY="144.0" text="New Payment">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="183.0" text="Date:">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="totalPaymentField" layoutX="50.0" layoutY="216.0" prefHeight="25.0" prefWidth="174.0" />
+            <TextField fx:id="descPaymentField" alignment="TOP_LEFT" layoutX="50.0" layoutY="250.0" prefHeight="111.0" prefWidth="174.0" />
+            <TextField fx:id="receptionistSalaryField" editable="false" layoutX="50.0" layoutY="102.0" prefHeight="25.0" prefWidth="174.0" />
+            <Label layoutX="69.0" layoutY="79.0" text="This receptionist salary">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="220.0" text="Total:">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="254.0" text="Desc:">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="paymentDateField" layoutX="50.0" layoutY="179.0" />
+            <Button fx:id="editReceptionistButton" layoutX="50.0" layoutY="42.0" mnemonicParsing="false" onAction="#editReceptionist" prefHeight="25.0" prefWidth="174.0" text="Edit receptionist info" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

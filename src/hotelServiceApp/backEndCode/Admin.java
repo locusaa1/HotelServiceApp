@@ -24,12 +24,11 @@ public final class Admin extends Person {
         this.hotelTotalCash = hotelTotalCash;
     }
 
-    @Override
-    public String toString() {
-        return "Administrator User" +
-                super.toString();
-    }
-
+    /**
+     * public Boolean confirmAdminAccess(String username, String password)
+     * This method is used to confirm the admin access into an event handler.
+     * It compares if the username and password in parameters are the same of the admin in the HotelData
+     */
     public Boolean confirmAdminAccess(String username, String password) {
 
         Boolean confirm = false;

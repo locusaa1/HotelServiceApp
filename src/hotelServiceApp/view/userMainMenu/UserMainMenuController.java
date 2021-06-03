@@ -2,10 +2,17 @@ package hotelServiceApp.view.userMainMenu;
 
 import hotelServiceApp.backEndCode.*;
 import hotelServiceApp.view.alerts.Alerts;
+import hotelServiceApp.view.changePasswordPanel.ChangePasswordPanelController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -13,6 +20,12 @@ import java.util.stream.Collectors;
 public class UserMainMenuController {
 
     public static Passenger passenger;
+
+    @FXML
+    private Button changePasswordButton;
+
+    @FXML
+    private Button helpButton;
 
     @FXML
     private ListView<SupplyItem> hotelItemsList = new ListView<>();
@@ -204,4 +217,37 @@ public class UserMainMenuController {
         return (ArrayList<SupplyItem>) this.cartItemsList.getItems().stream().collect(Collectors.toList());
     }
 
+    /**
+     * void changePassword(ActionEvent event)
+     * This method is an event handler used when the changePassword button is pressed.
+     * It acts also as a launcher of the change password window.
+     */
+    @FXML
+    void changePassword(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../changePasswordPanel/ChangePasswordPanel.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Change Password");
+        stage.setScene(new Scene(root, 400, 200));
+        ChangePasswordPanelController.passenger = this.passenger;
+        ChangePasswordPanelController.stage = stage;
+        ChangePasswordPanelController.stage.showAndWait();
+    }
+
+    /**
+     * void sendHelp(ActionEvent event)
+     * This method is an event handler used when the senHelp button is pressed.
+     * It simulates the action of sending a notification to a receptionist to call the 911 and goes to the room immediately.
+     * Fun fact, the button does nothing xD
+     */
+    @FXML
+    void sendHelp(ActionEvent event) {
+
+        if (Alerts.confirmationAlert("Yes", "No", "Need Help?", "This is a confirmation calling a receptionist." + "\n Do you need help?")) {
+
+            Alerts.infoAlert("Congrats", "The receptionist is on the way with help!", "close");
+        }
+    }
 }

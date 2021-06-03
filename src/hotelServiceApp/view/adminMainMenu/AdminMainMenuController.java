@@ -5,11 +5,19 @@ import hotelServiceApp.backEndCode.Main;
 import hotelServiceApp.backEndCode.Payment;
 import hotelServiceApp.backEndCode.Receptionist;
 import hotelServiceApp.view.alerts.Alerts;
+import hotelServiceApp.view.modifyReceptionistPanel.ModifyReceptionistPanelController;
+import hotelServiceApp.view.newReceptionistPanel.NewReceptionistPanelController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -57,6 +65,9 @@ public class AdminMainMenuController implements Initializable {
     @FXML
     private TextField receptionistSalaryField;
 
+    @FXML
+    private Button editReceptionistButton;
+
     /**
      * void logOut(ActionEvent event)
      * This method is an event handler used when the logOut button is pressed.
@@ -83,10 +94,23 @@ public class AdminMainMenuController implements Initializable {
         }
     }
 
+    /**
+     * void registerNewReceptionist(ActionEvent event)
+     * This method is an event handler used when the registerReceptionist button is pressed.
+     * It opens a new Stage with the fields to complete to generate a new receptionist.
+     * The admin can discard the info and go back o confirm an save the ino into a new receptionist into the hotel data.
+     */
     @FXML
-    void registerNewReceptionist(ActionEvent event) {
+    void registerNewReceptionist(ActionEvent event) throws IOException {
 
-
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../newReceptionistPanel/NewReceptionistPanel.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("New Receptionist");
+        stage.setScene(new Scene(root, 800, 600));
+        NewReceptionistPanelController.receptionistStage = stage;
+        NewReceptionistPanelController.receptionistStage.showAndWait();
     }
 
     /**
@@ -206,6 +230,34 @@ public class AdminMainMenuController implements Initializable {
     }
 
     /**
+     * void editReceptionist(ActionEvent event)
+     * This method is an event handler used when the editReceptionist button is pressed.
+     * It checks if the dni is a number, and if the dni is from a real receptionist into HotelData.
+     * It cast launchReceptionistEdit() to launch the new window.
+     */
+    @FXML
+    void editReceptionist(ActionEvent event) {
+
+        try {
+
+            int dni = Integer.parseInt(this.dniTextField.getText());
+            Receptionist receptionist = Main.hotelData.receptionistDniExists(this.dniTextField.getText());
+
+            if (receptionist != null) {
+
+                ModifyReceptionistPanelController.receptionist = receptionist;
+                this.launchReceptionistEdit();
+            } else {
+
+                Alerts.errorAlert("Error", "The receptionist does not exists.", "close");
+            }
+        } catch (NumberFormatException | IOException exception) {
+
+            Alerts.errorAlert("Error", "The dni must be a number.", "close");
+        }
+    }
+
+    /**
      * public void initialize(URL location, ResourceBundle resources)
      * This method is used when the scene is loaded into the stage initializing the variables inside the method
      */
@@ -214,5 +266,21 @@ public class AdminMainMenuController implements Initializable {
 
         String cash = Double.toString(AdminMainMenuController.admin.getHotelTotalCash());
         this.accountCashField.setText(cash);
+    }
+
+    /**
+     * public void launchReceptionistEdit()
+     * This method creates and launch the receptionist edit windows.
+     */
+    public void launchReceptionistEdit() throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../modifyReceptionistPanel/ModifyReceptionistPanel.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Editing Receptionist");
+        stage.setScene(new Scene(root, 600, 400));
+        ModifyReceptionistPanelController.stage = stage;
+        ModifyReceptionistPanelController.stage.showAndWait();
     }
 }
