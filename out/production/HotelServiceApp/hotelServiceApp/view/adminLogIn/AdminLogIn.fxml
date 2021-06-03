@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: FFB47C;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotelServiceApp.view.adminLogIn.AdminLogInController">
+    <children>
+        <Label fx:id="adminLogInTitle" layoutX="99.0" layoutY="174.0" text="Hote Service Administration">
+            <font>
+                <Font name="Bodoni MT" size="50.0" />
+            </font>
+        </Label>
+        <TextField fx:id="adminUsernameField" layoutX="326.0" layoutY="300.0" promptText="username" />
+        <PasswordField fx:id="adminPasswordField" layoutX="326.0" layoutY="354.0" promptText="password" />
+        <Button fx:id="adminLogInButton" layoutX="423.0" layoutY="410.0" mnemonicParsing="false" onAction="#logInAdmin" text="LogIn">
+         <font>
+            <Font name="Bodoni MT" size="12.0" />
+         </font></Button>
+        <Button fx:id="userMenuButton" layoutX="688.0" layoutY="543.0" mnemonicParsing="false" onAction="#changeLogInView" text="Click here">
+         <font>
+            <Font name="Bodoni MT" size="12.0" />
+         </font></Button>
+        <Label fx:id="userLogInLabel" layoutX="666.0" layoutY="510.0" text="User Log In?">
+         <font>
+            <Font name="Bodoni MT" size="20.0" />
+         </font></Label>
+      <Label layoutX="345.0" layoutY="258.0" text="Log In Menu">
+         <font>
+            <Font name="Bodoni MT" size="20.0" />
+         </font>
+      </Label>
+    </children>
+</Pane>

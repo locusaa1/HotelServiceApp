@@ -3,6 +3,7 @@ package hotelServiceApp.view.logInView;
 import hotelServiceApp.backEndCode.Main;
 import hotelServiceApp.backEndCode.Passenger;
 import hotelServiceApp.view.alerts.Alerts;
+import hotelServiceApp.view.passwordRecovery.PasswordRecoveryController;
 import hotelServiceApp.view.userBookingView.UserBookingViewController;
 import hotelServiceApp.view.userMainMenu.UserMainMenuController;
 import javafx.event.ActionEvent;
@@ -11,10 +12,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class LogInController {
+
+    @FXML
+    private Button forgotPasswordButton;
 
     @FXML
     private TextField usernameTextField;
@@ -84,7 +90,7 @@ public class LogInController {
     @FXML
     void changeLogInView(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../adminLogInView/AdminLogIn.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../adminLogIn/AdminLogIn.fxml"));
         Parent root = loader.load();
         Main.mainStage.setScene(new Scene(root, 800, 600));
     }
@@ -102,5 +108,30 @@ public class LogInController {
         Main.mainStage.setScene(new Scene(root, 800, 600));
     }
 
+    /**
+     * void passwordRecovery(ActionEvent event)
+     * This method is an event handler used when the passwordRecovery button is pressed.
+     * It calls the launchPasswordRecovery method to set up the new window.
+     */
+    @FXML
+    void passwordRecovery(ActionEvent event) throws IOException {
 
+        this.launchPasswordRecovery();
+    }
+
+    /**
+     * public void launchPasswordRecovery()
+     * This method creates and launch the passwordRecovery window.
+     */
+    public void launchPasswordRecovery() throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../passwordRecovery/PasswordRecovery.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Password Recovery");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(new Scene(root, 400, 200));
+        PasswordRecoveryController.stage = stage;
+        PasswordRecoveryController.stage.showAndWait();
+    }
 }

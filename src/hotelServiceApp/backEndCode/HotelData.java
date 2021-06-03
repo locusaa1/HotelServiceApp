@@ -13,7 +13,7 @@ public class HotelData {
     private List<Room> roomList;
     private List<Booking> bookingList;
     private List<SupplyItem> supplyItemList;
-    private List<Receptionist> recepcionistList;
+    private List<Receptionist> receptionistList;
     private Admin admin;
 
     public HotelData() {
@@ -22,7 +22,7 @@ public class HotelData {
         this.roomList = new ArrayList<>();
         this.bookingList = new ArrayList<>();
         this.supplyItemList = new ArrayList<>();
-        this.recepcionistList = new ArrayList<>();
+        this.receptionistList = new ArrayList<>();
     }
 
     public List<Passenger> getPassengerList() {
@@ -70,14 +70,14 @@ public class HotelData {
         this.supplyItemList.add(supplyItem);
     }
 
-    public List<Receptionist> getRecepcionistList() {
+    public List<Receptionist> getReceptionistList() {
 
-        return recepcionistList;
+        return receptionistList;
     }
 
-    public void setRecepcionistList(Receptionist recepcionist) {
+    public void setReceptionistList(Receptionist recepcionist) {
 
-        this.recepcionistList.add(recepcionist);
+        this.receptionistList.add(recepcionist);
     }
 
     public Admin getAdmin() {
@@ -125,15 +125,35 @@ public class HotelData {
     }
 
     /**
+     * public Passenger dniSearchPassenger(String dni)
+     * This method searches in the PassengerList of the HotelData nad returns the passenger.
+     * We assume that the passenger already exists. It needs to be checked first using the method passengerExists
+     */
+    public Passenger dniSearchPassenger(String dni) {
+
+        Passenger passenger = null;
+        for (Passenger p : this.passengerList) {
+
+            if (p.getDni().equals(dni)) {
+
+                passenger = p;
+            }
+        }
+        return passenger;
+    }
+
+    /**
      * public Passenger usernameSearchPassenger(String username)
-     * This method searches in the PassengerList of the HotelData and return the passenger.
+     * This method searches in the PassengerList of the HotelData and returns the passenger.
      * We assume that the passenger already exists. It needs to be checked first using the method passengerExists.
      */
     public Passenger usernameSearchPassenger(String username) {
 
         Passenger passenger = null;
         for (Passenger p : this.passengerList) {
+
             if (p.getUsername().equals(username)) {
+
                 passenger = p;
             }
         }
@@ -148,6 +168,7 @@ public class HotelData {
 
         Boolean confirm = false;
         if (passenger.getPassword().equals(password)) {
+
             confirm = true;
         }
         return confirm;
@@ -157,12 +178,12 @@ public class HotelData {
      * public Room searchAvailableRoom(LocalDate firstDate, LocalDate secondDate, int amountOfRooms)
      * This method confirms if there is an available room within the two localDates in parameters and with the amount of rooms specified.
      */
-    public Room searchAvailableRoom(LocalDate firstDate, LocalDate secondDate, int amountOfRooms) {
+    public Room searchAvailableRoom(LocalDate firstDate, LocalDate secondDate, int amountOfRooms, int amountOfPassengers) {
 
         Room roomFound = null;
         for (Room room : this.roomList) {
 
-            if (room.getBedroomsAmount().equals(amountOfRooms) && room.isRoomAvailable(firstDate, secondDate).equals(true)) {
+            if (room.getBedroomsAmount().equals(amountOfRooms) && room.isRoomAvailable(firstDate, secondDate).equals(true) && amountOfPassengers <= room.getMaxCapacity()) {
 
                 roomFound = room;
             }
@@ -249,7 +270,7 @@ public class HotelData {
     public Boolean receptionistExists(String dni) {
 
         Boolean confirm = false;
-        for (Receptionist r : this.recepcionistList) {
+        for (Receptionist r : this.receptionistList) {
 
             if (r.getDni().equals(dni)) {
 
@@ -267,7 +288,7 @@ public class HotelData {
     public Receptionist receptionistDniExists(String dni) {
 
         Receptionist receptionist = null;
-        for (Receptionist r : this.recepcionistList) {
+        for (Receptionist r : this.receptionistList) {
 
             if (r.getDni().equals(dni)) {
 
@@ -284,7 +305,7 @@ public class HotelData {
     public Boolean receptionistUsernameExists(String username) {
 
         Boolean confirm = false;
-        for (Receptionist r : this.recepcionistList) {
+        for (Receptionist r : this.receptionistList) {
 
             if (r.getUsername().equals(username)) {
 
@@ -302,7 +323,7 @@ public class HotelData {
     public Receptionist usernameSearchReceptionist(String username) {
 
         Receptionist receptionist = null;
-        for (Receptionist r : this.recepcionistList) {
+        for (Receptionist r : this.receptionistList) {
 
             if (r.getUsername().equals(username)) {
 
@@ -310,5 +331,100 @@ public class HotelData {
             }
         }
         return receptionist;
+    }
+
+    /**
+     * public void setCheckIn(Passenger passenger, Occupation occupation, List<Passenger> passengerList)
+     * This method sets a check in setting the Occupation, Passengers list and state of the room into the respective room.
+     * It also sets every Passenger state hosted to true and sets their room.
+     * It also sets the amount of money into the admin account.
+     */
+    public void setCheckIn(Passenger passenger, Occupation occupation, List<Passenger> passengerList) {
+
+        passenger.getBooking().getRoom().setPassengers(passengerList);
+        passenger.getBooking().getRoom().setOccupation(occupation);
+        passenger.getBooking().getRoom().setAvailable(false);
+        for (Passenger p : passengerList) {
+            p.setHosted(true);
+            p.setRoom(occupation.getBooking().getRoom());
+        }
+        this.admin.setHotelTotalCash(admin.getHotelTotalCash() + occupation.getOccupationPrice());
+    }
+
+    /**
+     * public void setCheckOut(Passenger passenger, double total)
+     * This method sets a check out setting every passenger his hosted state to false, room to null and booking to null.
+     * It also sets the room Occupation to null and sets the available state to true.
+     * It also sets the amount of money of all the purchases from all the passengers into the admin account.
+     */
+    public void setCheckOut(Passenger passenger, double total) {
+
+        List<Passenger> passengers = passenger.getRoom().getPassengers();
+        Room room = passenger.getRoom();
+        for (Passenger p : passengers) {
+
+            p.setHosted(false);
+            p.setRoom(null);
+            p.setBooking(null);
+        }
+        room.setOccupation(null);
+        room.setAvailable(true);
+        room.getPassengers().removeAll(passengers);
+        this.admin.setHotelTotalCash(this.admin.getHotelTotalCash() + total);
+    }
+
+    /**
+     * public Room searchRoomNumber(int roomNumber)
+     * This method searches for a room in the roomList into the HotelData.
+     * This returns the room if it was found or null if not.
+     */
+    public Room searchRoomNumber(int roomNumber) {
+
+        Room roomFound = null;
+        for (Room room : this.roomList) {
+
+            if (room.getRoomNumber().equals(roomNumber)) {
+
+                roomFound = room;
+            }
+        }
+        return roomFound;
+    }
+
+    /**
+     * public ObservableList<Room> returnAllTheRooms()
+     * This method copy all the rooms into an observable list used on a list view then.
+     */
+    public ObservableList<Room> returnAllTheRooms() {
+
+        List<Room> list = new ArrayList<>();
+
+        for (Room r : this.roomList) {
+
+            list.add(r);
+        }
+
+        ObservableList<Room> observableList = FXCollections.observableList(list);
+        return observableList;
+    }
+
+    /**
+     * public ObservableList<SupplyItem> returnAllSectionItems(SupplySections section)
+     * This method searches for all the items into the supplyItemsList into HotelData with the section in parameter.
+     * It returns an observable list used on a List view then.
+     */
+    public ObservableList<SupplyItem> returnAllSectionItems(SupplySections section) {
+
+        List<SupplyItem> list = new ArrayList<>();
+
+        for (SupplyItem i : this.supplyItemList) {
+
+            if (i.getSection().equals(section)) {
+
+                list.add(i);
+            }
+        }
+        ObservableList<SupplyItem> observableList = FXCollections.observableList(list);
+        return observableList;
     }
 }

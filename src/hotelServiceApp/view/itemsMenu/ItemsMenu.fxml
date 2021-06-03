@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FFB47C;"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hotelServiceApp.view.itemsMenu.ItemsMenuController">
+    <children>
+        <Label layoutX="275.0" layoutY="24.0" text="Items Menu">
+            <font>
+                <Font name="Bodoni MT" size="50.0"/>
+            </font>
+        </Label>
+        <AnchorPane layoutX="14.0" layoutY="141.0" prefHeight="424.0" prefWidth="236.0"
+                    style="-fx-background-color: #FFA15B;">
+            <children>
+                <SplitMenuButton fx:id="sectionMenu" layoutX="55.0" layoutY="14.0" mnemonicParsing="false"
+                                 prefHeight="25.0" prefWidth="149.0" text="Item Section">
+                    <items>
+                        <MenuItem fx:id="foodMenu" mnemonicParsing="false" onAction="#setOnFood" text="Food"/>
+                        <MenuItem fx:id="sodaMenu" mnemonicParsing="false" onAction="#setOnSoda" text="Soda"/>
+                        <MenuItem fx:id="drinksMenu" mnemonicParsing="false" onAction="#setOnDrinks" text="Drinks"/>
+                        <MenuItem fx:id="extraServicesMenu" mnemonicParsing="false" onAction="#setOnExtraServices"
+                                  text="Extra Services"/>
+                        <MenuItem fx:id="specialRoomsMenu" mnemonicParsing="false" onAction="#setOnSpecialRooms"
+                                  text="Special Rooms"/>
+                    </items>
+                </SplitMenuButton>
+                <TextField fx:id="nameField" layoutX="55.0" layoutY="62.0"/>
+                <TextField fx:id="priceField" layoutX="55.0" layoutY="113.0"/>
+                <TextField fx:id="stockField" layoutX="55.0" layoutY="161.0"/>
+                <TextField fx:id="descField" alignment="TOP_LEFT" layoutX="55.0" layoutY="211.0" prefHeight="143.0"
+                           prefWidth="149.0"/>
+                <Button fx:id="confirmButton" layoutX="55.0" layoutY="362.0" mnemonicParsing="false"
+                        onAction="#confirmItem" prefHeight="25.0" prefWidth="149.0" text="Confirm"/>
+                <Label layoutX="14.0" layoutY="66.0" text="Name:">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="17.0" layoutY="117.0" text="Price:">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="16.0" layoutY="165.0" text="Stock:">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="18.0" layoutY="211.0" text="Desc:">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="306.0" layoutY="141.0" prefHeight="424.0" prefWidth="463.0"
+                    style="-fx-background-color: #FFA15B;">
+            <children>
+                <Button fx:id="removeButton" layoutX="308.0" layoutY="393.0" mnemonicParsing="false"
+                        onAction="#removeItem" prefHeight="25.0" prefWidth="149.0" text="Remove"/>
+                <Button fx:id="modifyButton" layoutX="7.0" layoutY="393.0" mnemonicParsing="false"
+                        onAction="#modifyItem" prefHeight="25.0" prefWidth="149.0" text="Modify"/>
+                <ListView fx:id="itemsList" layoutX="8.0" layoutY="14.0" prefHeight="370.0" prefWidth="448.0"/>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
