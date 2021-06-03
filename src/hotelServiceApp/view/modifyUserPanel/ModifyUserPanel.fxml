@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hotelServiceApp.view.modifyUserPanel.ModifyUserPanelController">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFB47C;">
+            <children>
+                <Label fx:id="phoneLabel" layoutX="87.0" layoutY="278.0" prefHeight="17.0" prefWidth="48.0"
+                       text="Phone:">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="addressLabel" layoutX="81.0" layoutY="238.0" prefHeight="17.0" prefWidth="59.0"
+                       text="Address:">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="countryLabel" layoutX="81.0" layoutY="198.0" prefHeight="17.0" prefWidth="59.0"
+                       text="Country:">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="dniLabel" layoutX="102.0" layoutY="158.0" prefHeight="17.0" prefWidth="34.0" text="Dni:">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="surnameLabel" layoutX="81.0" layoutY="118.0" prefHeight="17.0" prefWidth="59.0"
+                       text="Surname:">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="nameLabel" layoutX="95.0" layoutY="78.0" prefHeight="17.0" prefWidth="48.0" text="Name:">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label fx:id="usernameLabel" layoutX="63.0" layoutY="321.0" prefHeight="17.0" prefWidth="78.0"
+                       text="Username:">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="usernameTextField" layoutX="143.0" layoutY="317.0" promptText="username"
+                           AnchorPane.topAnchor="317.0"/>
+                <TextField fx:id="phoneTextField" layoutX="143.0" layoutY="274.0" promptText="phone"
+                           AnchorPane.topAnchor="274.0"/>
+                <TextField fx:id="addressTextField" layoutX="143.0" layoutY="234.0" promptText="address"/>
+                <TextField fx:id="countryTextField" layoutX="143.0" layoutY="194.0" promptText="country"/>
+                <Label fx:id="titleLabel" layoutX="110.0" layoutY="24.0" prefHeight="25.0" prefWidth="215.0"
+                       text="Passenger information">
+                    <font>
+                        <Font name="Bodoni MT Black" size="18.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="dniTextFIeld" layoutX="143.0" layoutY="154.0" promptText="dni"/>
+                <TextField fx:id="surnameTextField" layoutX="143.0" layoutY="114.0" promptText="surname"/>
+                <TextField fx:id="nameTextField" layoutX="143.0" layoutY="74.0" promptText="name"/>
+                <AnchorPane layoutX="366.0" layoutY="260.0" prefHeight="79.0" prefWidth="202.0"
+                            style="-fx-background-color: #FFA15B;">
+                    <children>
+                        <Button fx:id="confirmButton" layoutX="70.0" layoutY="42.0" mnemonicParsing="false"
+                                onAction="#confirmChanges" text="Confirm">
+                            <font>
+                                <Font name="Bodoni MT" size="14.0"/>
+                            </font>
+                        </Button>
+                        <Label layoutX="55.0" layoutY="14.0" text="Apply changes?">
+                            <font>
+                                <Font name="Bodoni MT" size="14.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <Label layoutX="135.0" layoutY="49.0" text="Modify the fields that you want"/>
+                <Label layoutX="65.0" layoutY="358.0" text="Password:">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <PasswordField fx:id="passwordTextField" layoutX="144.0" layoutY="354.0" promptText="password"/>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

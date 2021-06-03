@@ -15,6 +15,13 @@ public class Main extends Application {
     public static Scene logInScene;
     public static HotelData hotelData;
 
+    /**
+     * public void start(Stage primaryStage)
+     * This method is override from Application in Main.
+     * It's the first method executing the mainStage with the mainScene.
+     * It also contains the action of the closeProgram method.
+     * It has the fileReader method to read all the info from the specified file.
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../view/logInView/LogIn.fxml"));
@@ -29,10 +36,16 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    /**
+     * public void closeProgram()
+     * This method is the sentence called when the mainStage is requested to be closed.
+     * It has the fileWriter method to write all the info into the specified file.
+     */
     public void closeProgram() {
 
         if (Alerts.confirmationAlert("Yes", "No", "Closing the program", "Are you sure you want to close the program?")) {
 
+            //GSONWritingToFile.writeToFileHotelData();
             this.mainStage.close();
         }
     }
@@ -42,9 +55,10 @@ public class Main extends Application {
         Main.hotelData = new HotelData();
         Passenger p = new Passenger("carlos", "garcia", "111", "USA", "Calle 40", "223", "carlitos", "123");
         Room room = new Room(1, 5, 1, 500);
-        Booking booking = new Booking(LocalDate.now(), p, room, LocalDate.now().plusDays(1), LocalDate.now().plusDays(2));
+        Room room2 = new Room(2, 10, 2, 1000);
+        Booking booking = new Booking(LocalDate.now(), p, room, LocalDate.now(), LocalDate.now().plusDays(2));
         Main.hotelData.setRoomList(room);
-        p.setHosted(true);
+        Main.hotelData.setRoomList(room2);
         Main.hotelData.setPassengerList(p);
         Main.hotelData.setNewBooking(p, room, booking);
         Passenger q = new Passenger("ivan", "gonzales", "222", "USA", "Calle 40", "223", "asd", "asd");
@@ -64,7 +78,8 @@ public class Main extends Application {
         Receptionist receptionist = new Receptionist("gian", "branda", "222", "arg", "asdasd", "111", "asd", "asd", 1000);
         //receptionist.setPaymentList(new Payment(LocalDate.now(), 1000, "first payment"));
         //System.out.println(receptionist.getPaymentList().get(0).toString());
-        Main.hotelData.setRecepcionistList(receptionist);
+        Main.hotelData.setReceptionistList(receptionist);
+        //GSONReadingFromFile.readFromFileHotelData();
         launch(args);
 
     }

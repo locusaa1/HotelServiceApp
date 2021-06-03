@@ -7,26 +7,162 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotelServiceApp.view.userMainMenu.UserMainMenuController">
-   <children>
-      <Label fx:id="label" layoutX="340.0" layoutY="34.0" prefHeight="62.0" prefWidth="120.0" text="USER MAIN MENU" />
-      <Button fx:id="logOutButton" layoutX="721.0" layoutY="553.0" mnemonicParsing="false" onAction="#logOut" text="LogOut" />
-      <ListView fx:id="cartItemsList" layoutX="483.0" layoutY="206.0" prefHeight="292.0" prefWidth="253.0" />
-      <ListView fx:id="hotelItemsList" layoutX="138.0" layoutY="206.0" prefHeight="292.0" prefWidth="202.0" />
-      <Button fx:id="foodButton" layoutX="14.0" layoutY="206.0" mnemonicParsing="false" onAction="#setFoodInListView" prefHeight="25.0" prefWidth="107.0" text="Food" AnchorPane.bottomAnchor="369.0" />
-      <Button fx:id="sodaButton" layoutX="14.0" layoutY="252.0" mnemonicParsing="false" onAction="#setSodaInListView" prefHeight="25.0" prefWidth="107.0" text="Soda" AnchorPane.bottomAnchor="319.0" />
-      <Button fx:id="drinksButton" layoutX="14.0" layoutY="300.0" mnemonicParsing="false" onAction="#setDrinksInListView" prefHeight="25.0" prefWidth="107.0" text="Drinks" AnchorPane.bottomAnchor="269.0" />
-      <Button fx:id="addItemsButton" layoutX="138.0" layoutY="513.0" mnemonicParsing="false" onAction="#addItemsToCartList" prefHeight="25.0" prefWidth="202.0" text="Add to my cart" />
-      <Button fx:id="extraServicesButton" layoutX="14.0" layoutY="352.0" mnemonicParsing="false" onAction="#setExtraServicesInListView" prefHeight="25.0" prefWidth="107.0" text="Extra Services" AnchorPane.bottomAnchor="219.0" />
-      <Button fx:id="specialRoomsButton" layoutX="14.0" layoutY="392.0" mnemonicParsing="false" onAction="#setSpecialRoomsInListView" prefHeight="25.0" prefWidth="107.0" text="Special Rooms" AnchorPane.bottomAnchor="169.0" />
-      <Label layoutX="78.0" layoutY="107.0" text="You can purchase from your room!" />
-      <Label layoutX="14.0" layoutY="139.0" text="You just need to select any button to show those items in the list below" />
-      <Label layoutX="14.0" layoutY="173.0" text="You can select multiple items at a time (shift+click)" />
-      <Label layoutX="15.0" layoutY="156.0" text="If you want two from the same item you have to add it twice separately" />
-      <Label layoutX="483.0" layoutY="190.0" text="I'm buying this:" />
-      <Label layoutX="483.0" layoutY="139.0" text="You can remove items from your cart" />
-      <Label layoutX="483.0" layoutY="156.0" text="By selecting them and touching the button below" />
-      <Button fx:id="removeButton" layoutX="483.0" layoutY="513.0" mnemonicParsing="false" onAction="#removeFromCartList" text="Remove" />
-      <Button fx:id="purchaseButton" layoutX="672.0" layoutY="513.0" mnemonicParsing="false" onAction="#confirmPurchase" text="Purchase" />
-   </children>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: FFB47C;"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hotelServiceApp.view.userMainMenu.UserMainMenuController">
+    <children>
+        <Label fx:id="label" layoutX="226.0" layoutY="8.0" prefHeight="61.0" prefWidth="348.0" text="User Main Menu">
+            <font>
+                <Font name="Bodoni MT" size="50.0"/>
+            </font>
+        </Label>
+        <Button fx:id="logOutButton" layoutX="721.0" layoutY="553.0" mnemonicParsing="false" onAction="#logOut"
+                text="LogOut">
+            <font>
+                <Font name="Bodoni MT" size="14.0"/>
+            </font>
+        </Button>
+        <Label layoutX="298.0" layoutY="61.0" text="You can purchase from your room!">
+            <font>
+                <Font name="Bodoni MT" size="14.0"/>
+            </font>
+        </Label>
+        <AnchorPane layoutX="467.0" layoutY="139.0" prefHeight="410.0" prefWidth="304.0"
+                    style="-fx-background-color: FFA15B;">
+            <children>
+                <ListView fx:id="cartItemsList" layoutX="25.0" layoutY="67.0" prefHeight="304.0" prefWidth="253.0"
+                          style="-fx-background-color: #FFA481;"/>
+                <Label layoutX="25.0" layoutY="48.0" text="I'm buying this:">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="29.0" layoutY="14.0" text="You can remove items from your cart">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="7.0" layoutY="31.0" text="By selecting them and touching the button below">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="removeButton" layoutX="20.0" layoutY="373.0" mnemonicParsing="false"
+                        onAction="#removeFromCartList" text="Remove">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="purchaseButton" layoutX="212.0" layoutY="373.0" mnemonicParsing="false"
+                        onAction="#confirmPurchase" text="Purchase">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="9.0" layoutY="140.0" prefHeight="410.0" prefWidth="435.0"
+                    style="-fx-background-color: FFA15B;">
+            <children>
+                <ListView fx:id="hotelItemsList" layoutX="138.0" layoutY="64.0" prefHeight="292.0" prefWidth="245.0"
+                          style="-fx-background-color: #FFA481;"/>
+                <Button fx:id="foodButton" layoutX="15.0" layoutY="65.0" mnemonicParsing="false"
+                        onAction="#setFoodInListView" prefHeight="25.0" prefWidth="107.0" text="Food"
+                        AnchorPane.bottomAnchor="310.0">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="sodaButton" layoutX="15.0" layoutY="115.0" mnemonicParsing="false"
+                        onAction="#setSodaInListView" prefHeight="25.0" prefWidth="107.0" text="Soda"
+                        AnchorPane.bottomAnchor="260.0">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="drinksButton" layoutX="15.0" layoutY="165.0" mnemonicParsing="false"
+                        onAction="#setDrinksInListView" prefHeight="25.0" prefWidth="107.0" text="Drinks"
+                        AnchorPane.bottomAnchor="210.0">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="addItemsButton" layoutX="138.0" layoutY="363.0" mnemonicParsing="false"
+                        onAction="#addItemsToCartList" prefHeight="27.0" prefWidth="245.0" text="Add to my cart">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="extraServicesButton" layoutX="15.0" layoutY="215.0" mnemonicParsing="false"
+                        onAction="#setExtraServicesInListView" prefHeight="25.0" prefWidth="107.0" text="Extra Services"
+                        AnchorPane.bottomAnchor="160.0">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="specialRoomsButton" layoutX="15.0" layoutY="265.0" mnemonicParsing="false"
+                        onAction="#setSpecialRoomsInListView" prefHeight="25.0" prefWidth="107.0" text="Special Rooms"
+                        AnchorPane.bottomAnchor="110.0">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Button>
+                <Label layoutX="8.0" layoutY="23.0"
+                       text="You just need to select any button to show the items in stock">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="8.0" layoutY="40.0" text="You can select multiple items at a time (shift+click)">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="8.0" layoutY="6.0"
+                       text="If you want two from the same item you have to add it twice separately">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="9.0" layoutY="82.0" prefHeight="54.0" prefWidth="178.0"
+                    style="-fx-background-color: #FFA15B;">
+            <children>
+                <Label layoutX="34.0" text="Change my password"/>
+                <Button fx:id="changePasswordButton" layoutX="57.0" layoutY="20.0" mnemonicParsing="false"
+                        onAction="#changePassword" text="Change">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+        <AnchorPane layoutX="550.0" layoutY="56.0" prefHeight="80.0" prefWidth="220.0"
+                    style="-fx-background-color: #FFA15B;">
+            <children>
+                <Button fx:id="helpButton" layoutX="84.0" layoutY="53.0" mnemonicParsing="false" onAction="#sendHelp"
+                        text="Help!">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Button>
+                <Label layoutX="49.0" text="Do you need help?">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label layoutY="17.0" text="If you press the button a receptionist ">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+                <Label layoutX="5.0" layoutY="34.0" text="will go to your room calling the 911">
+                    <font>
+                        <Font name="Bodoni MT" size="14.0"/>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>

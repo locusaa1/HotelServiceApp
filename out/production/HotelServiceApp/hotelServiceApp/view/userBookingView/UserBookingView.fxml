@@ -1,27 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotelServiceApp.view.userBookingView.UserBookingViewController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: FFB47C;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hotelServiceApp.view.userBookingView.UserBookingViewController">
    <children>
-      <ListView fx:id="bookingList" layoutX="64.0" layoutY="213.0" prefHeight="248.0" prefWidth="230.0" />
-      <Button fx:id="deleteBookingButton" layoutX="219.0" layoutY="499.0" mnemonicParsing="false" onAction="#deleteBooking" text="Delete" />
-      <Label layoutX="365.0" layoutY="36.0" text="Booking view" />
-      <Label fx:id="showBookingLabel" layoutX="64.0" layoutY="471.0" text="Have already booked?" />
-      <Label fx:id="deleteBookingLabel" layoutX="197.0" layoutY="471.0" text="Want to delete it?" />
-      <Button fx:id="showBookingButton" layoutX="101.0" layoutY="499.0" mnemonicParsing="false" onAction="#showBooking" text="Show" />
-      <Label fx:id="listFirstLabel" layoutX="102.0" layoutY="158.0" text="You can list your reservations" />
-      <Label fx:id="listSecondLabel" layoutX="56.0" layoutY="187.0" text="You can select and delete any item from the list" />
-      <CheckBox fx:id="oneBedroomCheckBox" layoutX="458.0" layoutY="158.0" mnemonicParsing="false" text="1 Bedroom" />
-      <CheckBox fx:id="twoBedroomsCheckBox" layoutX="556.0" layoutY="158.0" mnemonicParsing="false" text="2 Bedrooms" />
-      <DatePicker fx:id="firstDatePicker" layoutX="458.0" layoutY="240.0" promptText="from" />
-      <DatePicker fx:id="secondDatePicker" layoutX="458.0" layoutY="348.0" promptText="untill" />
-      <Button fx:id="generateButton" layoutX="458.0" layoutY="449.0" mnemonicParsing="false" onAction="#generateBooking" prefHeight="25.0" prefWidth="174.0" text="Generate reservation" />
-      <Button fx:id="refreshListButton" layoutX="144.0" layoutY="543.0" mnemonicParsing="false" onAction="#refreshListView" text="Refresh List" />
-      <Button fx:id="logOutButton" layoutX="716.0" layoutY="543.0" mnemonicParsing="false" onAction="#logOut" text="LogOut" />
+      <Label layoutX="257.0" layoutY="26.0" text="Booking view">
+         <font>
+            <Font name="Bodoni MT" size="50.0" />
+         </font></Label>
+      <Button fx:id="logOutButton" layoutX="706.0" layoutY="549.0" mnemonicParsing="false" onAction="#logOut" text="LogOut">
+         <font>
+            <Font name="Bodoni MT" size="14.0" />
+         </font></Button>
+      <Label layoutX="324.0" layoutY="97.0" text="Welcome traveller">
+         <font>
+            <Font name="Bodoni MT" size="20.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="460.0" layoutY="145.0" prefHeight="385.0" prefWidth="292.0" style="-fx-background-color: FFA15B;">
+         <children>
+            <Button fx:id="generateButton" layoutX="59.0" layoutY="335.0" mnemonicParsing="false" onAction="#generateBooking" prefHeight="25.0" prefWidth="174.0" text="Generate reservation">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Button>
+            <CheckBox fx:id="oneBedroomCheckBox" layoutX="52.0" layoutY="151.0" mnemonicParsing="false" text="1 Bedroom">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="twoBedroomsCheckBox" layoutX="154.0" layoutY="151.0" mnemonicParsing="false" text="2 Bedrooms">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </CheckBox>
+            <DatePicker fx:id="firstDatePicker" layoutX="59.0" layoutY="243.0" promptText="from" />
+            <DatePicker fx:id="secondDatePicker" layoutX="59.0" layoutY="299.0" promptText="untill" />
+            <Label layoutX="76.0" layoutY="176.0" text="Amount of passengers">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="amountOfPassengers" layoutX="69.0" layoutY="200.0" promptText="passengers" />
+            <Label layoutX="4.0" layoutY="20.0" text="You were redirected here to make a new booking">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="2.0" layoutY="44.0" text="You can chose between one room or two connected">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="5.0" layoutY="67.0" text="Also you have to specifi the amount of passengers">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="31.0" layoutY="90.0" text="You have to pay at the check-in moment">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="43.0" layoutY="133.0" prefHeight="429.0" prefWidth="291.0" style="-fx-background-color: FFA15B;">
+         <children>
+            <ListView fx:id="bookingList" layoutX="29.0" layoutY="69.0" prefHeight="248.0" prefWidth="230.0" style="-fx-background-color: FFA481;" />
+            <Button fx:id="deleteBookingButton" layoutX="185.0" layoutY="355.0" mnemonicParsing="false" onAction="#deleteBooking" text="Delete">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="showBookingLabel" layoutX="14.0" layoutY="327.0" text="Have already booked?">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="deleteBookingLabel" layoutX="161.0" layoutY="327.0" text="Want to delete it?">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="showBookingButton" layoutX="53.0" layoutY="355.0" mnemonicParsing="false" onAction="#showBooking" text="Show">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Button>
+            <Label fx:id="listFirstLabel" layoutX="56.0" layoutY="14.0" text="You can list your reservations">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="listSecondLabel" layoutX="10.0" layoutY="43.0" text="You can select and delete any item from the list">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="refreshListButton" layoutX="98.0" layoutY="388.0" mnemonicParsing="false" onAction="#refreshListView" text="Refresh List">
+               <font>
+                  <Font name="Bodoni MT" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

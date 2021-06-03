@@ -49,6 +49,10 @@ public class Payment {
         this.description = description;
     }
 
+    /**
+     * public String toString()
+     * This method returns all the info of the class as a String.
+     */
     @Override
     public String toString() {
         return "date: " + this.date + "\n" +

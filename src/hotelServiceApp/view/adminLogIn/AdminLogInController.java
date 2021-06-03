@@ -1,11 +1,9 @@
-package hotelServiceApp.view.adminLogInView;
+package hotelServiceApp.view.adminLogIn;
 
-import hotelServiceApp.backEndCode.Admin;
 import hotelServiceApp.backEndCode.Receptionist;
 import hotelServiceApp.view.adminMainMenu.AdminMainMenuController;
 import hotelServiceApp.view.alerts.Alerts;
-import hotelServiceApp.view.receptionistMainMenu.ReceptionistMainMenuController;
-import hotelServiceApp.view.userMainMenu.UserMainMenuController;
+import hotelServiceApp.view.receptionistMenu.ReceptionistMenuController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -60,8 +58,8 @@ public class AdminLogInController {
             Receptionist receptionist = Main.hotelData.usernameSearchReceptionist(this.adminUsernameField.getText());
             if (receptionist.confirmReceptionistAccess(this.adminUsernameField.getText(), this.adminPasswordField.getText())) {
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../receptionistMainMenu/ReceptionistMainMenu.fxml"));
-                ReceptionistMainMenuController.recepcionist = receptionist;
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../receptionistMenu/ReceptionistMenu.fxml"));
+                ReceptionistMenuController.receptionist = receptionist;
                 Parent root = loader.load();
                 Main.mainStage.setScene(new Scene(root, 800, 600));
             } else {

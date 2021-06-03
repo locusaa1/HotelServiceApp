@@ -17,7 +17,8 @@ public final class Room {
 
     public Room() {
 
-        this.bookingList = new ArrayList<Booking>();
+        this.bookingList = new ArrayList<>();
+        this.passengers = new ArrayList<>();
         this.available = true;
     }
 
@@ -26,7 +27,8 @@ public final class Room {
         this.roomNumber = roomNumber;
         this.maxCapacity = maxCapacity;
         this.bedroomsAmount = bedroomsAmount;
-        this.bookingList = new ArrayList<Booking>();
+        this.bookingList = new ArrayList<>();
+        this.passengers = new ArrayList<>();
         this.available = true;
         this.price = price;
     }
@@ -81,6 +83,16 @@ public final class Room {
         this.bookingList.add(booking);
     }
 
+    public List<Passenger> getPassengers() {
+
+        return passengers;
+    }
+
+    public void setPassengers(List<Passenger> passengers) {
+
+        this.passengers = passengers;
+    }
+
     public double getPrice() {
 
         return price;
@@ -115,6 +127,10 @@ public final class Room {
                 confirm = true;
             }
         }
+        if (this.bookingList.size() == 0) {
+
+            confirm = true;
+        }
         return confirm;
     }
 
@@ -137,5 +153,33 @@ public final class Room {
 
             this.bookingList.remove(booking);
         }
+    }
+
+    /**
+     * public double getTotalPurchases()
+     * This method calculates the total amount of the purchases from all the passengers into the room and returns it.
+     */
+    public double getTotalPurchases() {
+
+        double total = 0;
+        for (Passenger p : this.passengers) {
+
+            total += p.totalPurchases();
+        }
+        return total;
+    }
+
+    /**
+     * public String toString()
+     * This method returns all the info of the class in String type.
+     */
+    @Override
+    public String toString() {
+        return "Room details:" + "\n" +
+                "room n°: " + this.roomNumber + "\n" +
+                "Max capacity: " + this.maxCapacity + "\n" +
+                "Bedrooms amount: " + this.bedroomsAmount + "\n" +
+                "Price: " + this.price + "\n" +
+                "Available: " + this.available;
     }
 }

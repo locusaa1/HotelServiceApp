@@ -41,5 +41,14 @@ public class PassengerReview {
         this.review = review;
     }
 
-
+    /**
+     * public String toString()
+     * This method returns all the info of the class as a String.
+     */
+    @Override
+    public String toString() {
+        return "Passenger Review details:" + "\n" +
+                "Review date: " + this.reviewDate + "\n" +
+                "Review:" + this.review;
+    }
 }
