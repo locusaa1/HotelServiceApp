@@ -45,7 +45,7 @@ public class Main extends Application {
 
         if (Alerts.confirmationAlert("Yes", "No", "Closing the program", "Are you sure you want to close the program?")) {
 
-            //GSONWritingToFile.writeToFileHotelData();
+            GSONWritingToFile.writeToFileHotelData();
             this.mainStage.close();
         }
     }
@@ -79,7 +79,7 @@ public class Main extends Application {
         //receptionist.setPaymentList(new Payment(LocalDate.now(), 1000, "first payment"));
         //System.out.println(receptionist.getPaymentList().get(0).toString());
         Main.hotelData.setReceptionistList(receptionist);
-        //GSONReadingFromFile.readFromFileHotelData();
+        GSONReadingFromFile.readFromFileHotelData();
         launch(args);
 
     }

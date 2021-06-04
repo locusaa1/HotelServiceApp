@@ -1,5 +1,6 @@
 package hotelServiceApp.backEndCode;
 
+import com.google.gson.Gson;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -35,6 +36,11 @@ public class HotelData {
         this.passengerList.add(passenger);
     }
 
+    public void setPassengerEntireList(List<Passenger> passengerList){
+
+        this.passengerList = passengerList;
+    }
+
     public Passenger getPassenger(int index) {
 
         return this.passengerList.get(index);
@@ -50,6 +56,11 @@ public class HotelData {
         this.roomList.add(room);
     }
 
+    public void setRoomEntireList(List<Room> roomList){
+
+        this.roomList = roomList;
+    }
+
     public List<Booking> getBookingList() {
 
         return bookingList;
@@ -58,6 +69,11 @@ public class HotelData {
     public void setBookingList(Booking booking) {
 
         this.bookingList.add(booking);
+    }
+
+    public void setBookingEntireList(List<Booking> bookingList){
+
+        this.bookingList = bookingList;
     }
 
     public List<SupplyItem> getSupplyItemList() {
@@ -70,6 +86,11 @@ public class HotelData {
         this.supplyItemList.add(supplyItem);
     }
 
+    public void setSupplyItemEntireList(List<SupplyItem> supplyItemList){
+
+        this.supplyItemList = supplyItemList;
+    }
+
     public List<Receptionist> getReceptionistList() {
 
         return receptionistList;
@@ -78,6 +99,11 @@ public class HotelData {
     public void setReceptionistList(Receptionist recepcionist) {
 
         this.receptionistList.add(recepcionist);
+    }
+
+    public void setReceptionistEntireList(List<Receptionist> receptionistList){
+
+        this.receptionistList = receptionistList;
     }
 
     public Admin getAdmin() {
