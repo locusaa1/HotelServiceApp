@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 
+
 public class GSONWritingToFile {
 
     /**
@@ -13,6 +14,7 @@ public class GSONWritingToFile {
      * This method is an example of how to write a file using the library downloaded.
      */
     public static void writeToFileHotelData() {
+        Gson gson = new Gson();
         /*Gson gson = new Gson();
         String json = gson.toJson(Main.hotelData);
         try {

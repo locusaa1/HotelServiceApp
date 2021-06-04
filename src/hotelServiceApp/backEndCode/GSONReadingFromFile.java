@@ -3,11 +3,13 @@ package hotelServiceApp.backEndCode;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Type;
 import java.util.List;
+
 
 public class GSONReadingFromFile {
 
@@ -15,6 +17,8 @@ public class GSONReadingFromFile {
      * public static void readFromFileHotelData()
      * This method is an example of how to read from a file using the library downloaded.
      */
+
+    public static void readFromFileHotelData() {
     /*public static void readFromFileHotelData() {
 
         Gson gson = new Gson();
@@ -26,6 +30,8 @@ public class GSONReadingFromFile {
 
             e.printStackTrace();
         }
+    }
+}
     }*/
 
     public static void readPassengersFromFileHotelData(){

@@ -86,6 +86,16 @@ public class HotelData {
         this.supplyItemList.add(supplyItem);
     }
 
+
+    public List<Receptionist> getReceptionistList() {
+
+        return receptionistList;
+    }
+
+    public void setReceptionistList(Receptionist recepcionist) {
+
+        this.receptionistList.add(recepcionist);
+
     public void setSupplyItemEntireList(List<SupplyItem> supplyItemList){
 
         this.supplyItemList = supplyItemList;
@@ -104,6 +114,7 @@ public class HotelData {
     public void setReceptionistEntireList(List<Receptionist> receptionistList){
 
         this.receptionistList = receptionistList;
+
     }
 
     public Admin getAdmin() {
